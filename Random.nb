@@ -1,0 +1,274 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10500,        264]
+NotebookOptionsPosition[      9670,        231]
+NotebookOutlinePosition[     10006,        246]
+CellTagsIndexPosition[      9963,        243]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData["histogram"], "Input",
+ CellChangeTimes->{{3.5328592865646353`*^9, 3.532859288430579*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RandomVariate", "[", 
+  RowBox[{"NormalDistribution", ",", "4"}], "]"}]], "Input",
+ CellChangeTimes->{{3.532859494810238*^9, 3.53285951856635*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"RandomVariate", "::", "unsdst"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The first argument \[NoBreak]\\!\\(80\\)\[NoBreak] is not \
+a valid distribution. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/RandomVariate\\\", ButtonNote -> \
+\\\"RandomVariate::unsdst\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.532859500563342*^9}],
+
+Cell[BoxData[
+ RowBox[{"RandomVariate", "[", 
+  RowBox[{"80", ",", "4"}], "]"}]], "Output",
+ CellChangeTimes->{3.53285950056502*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"60", ",", "80"}], "}"}], ",", 
+       RowBox[{"{", "60", "}"}]}], "]"}], ",", 
+     RowBox[{"AxesStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Black", ",", "30"}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.532859656635236*^9, 3.532859664851595*^9}, 
+   3.532859768458469*^9, {3.5328598163205843`*^9, 3.532859917380679*^9}, {
+   3.532859988086534*^9, 3.532860001830783*^9}, {3.532860033932704*^9, 
+   3.5328600458340397`*^9}, {3.532860170860162*^9, 3.532860199277845*^9}, {
+   3.5328604636104317`*^9, 3.532860586876937*^9}, {3.532860663561306*^9, 
+   3.532860690778228*^9}, {3.532860765945093*^9, 3.5328608578178368`*^9}, 
+   3.532861523013866*^9, {3.53286172924561*^9, 3.532861737434722*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], LineBox[CompressedData["
+1:eJw9k2tIU3EYxocjFTbHykZmSy23oSbOvKWm7pnTeT2WWw0pWiswS8vCfSiz
+1UHF1G9apBMsu2FoVF6SMsWGgVoqkmIX0lTQvBR5odQPZkXn7cDh8JznfX/P
++38PZ8fxs7p0Ox6PF/Hn/vv8d82rDMKWl7dUenAv0N2UIy/o289pR8xnMrkz
+D/dxWozv8eZXGYIUTm8Gdp0p7h0i7QL/0jSHVIOO01LIcqPC1OOpnPaAo9Gv
+sqKM+DshyC557ZxFfBkaP97UNOZTvQKeHf6uTiGkvWAa8T6y4RD1+yAtqfub
+lkfaF1b50NqyK2k/PBq4cn3NQnx/CBfaTjR60nl3wyriV/g+pvkDEGHcbuo8
+RX4gegO9SreISQfhRWGrUSwhfjBmRW53pp2IH4J1oX7c3ZXOvwctdQf0zulU
+HwqlZrBQ1kl+GEbv20TDC5QfjuH2Zz38Asrbizneu9pfaqqPQOWHi+eUxeRH
+IrMauskR2k8U5tYPd9XnEU+Fp6eXBkXh5AOfTEyGspOblwUcbpRZfs4TX42g
+bTOTAV84PqvGE/FXhVVKvGjwLatbJ0zcedho9N8+GHi1i/o1EA7UbpReIl8D
+7bV2m8JM/TGQafueN9RRfgwkq3I584P8WFywbzYIfMiPRRF7ub65ivanRU5q
+UT8/j8tjtZieaOW5mSg/Dmn599wkFeTHQZX75uRiCe0rHtk2893oMZovHg/i
+qhaWUqg/AaNtRrXqPOUnwEUxK1kJpfxEvK1pU9jHcvOyiUjsMS9GLpOfBLv1
+AMuxKeInYVND+RTjQfxklGe9j5J10HzJaHL5LB1jyGew1H802L2J+14sg9XB
+MYno//+XAn1NtveKSoff6B/2KQ==
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 60.},
+  AxesStyle->Directive[
+    GrayLevel[0], 30],
+  ImageSize->{1536., Automatic},
+  PlotRange->{{0., 60.}, {60., 79.61248157276424}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{{3.532860669577031*^9, 3.532860702160668*^9}, {
+   3.532860748353553*^9, 3.532860782695238*^9}, 3.532860858573197*^9, 
+   3.532861524114354*^9}]
+}, Open  ]],
+
+Cell[BoxData["plot"], "Input",
+ CellChangeTimes->{{3.532861751578514*^9, 3.532861752185787*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.532861802318564*^9, 3.53286182983405*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"70", ",", "65"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "60"}], "}"}], ",", 
+     RowBox[{"AxesStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Black", ",", "30"}], "]"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"a", ",", "b"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.532861886383086*^9, 3.53286202056006*^9}, {
+  3.5328620640512533`*^9, 3.5328620651094522`*^9}, {3.532862157985117*^9, 
+  3.532862177514575*^9}, {3.532862220743244*^9, 3.532862242738696*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Show", "::", "gcomb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Could not combine the graphics objects in \
+\[NoBreak]\\!\\(Show[\\(\\(80, \\*GraphicsBox[List[List[List[], List[], \
+List[Hue[0.67`, 0.6`, 0.6`], LineBox[List[List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], Skeleton[2]]]], List[Hue[0.9060679774997897`, 0.6`, 0.6`], \
+LineBox[List[List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], \
+List[Skeleton[2]], List[Skeleton[2]], List[Skeleton[2]], Skeleton[2]]]]]], \
+List[Rule[AspectRatio, NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], \
+Rule[Axes, True], Rule[AxesOrigin, List[0, 65.`]], Rule[AxesStyle, \
+Directive[GrayLevel[0], 30]], Rule[PlotRange, List[List[0, 60], List[65.`, \
+70.`]]], Rule[PlotRangeClipping, True], Rule[PlotRangePadding, \
+List[Scaled[0.02`], Scaled[0.02`]]]]]\\)\\)]\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/Show\\\", ButtonNote -> \
+\\\"Show::gcomb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.532862246600172*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Segnale_random", "_spazzata"}]], "Input",
+ CellChangeTimes->{{3.532865215624732*^9, 3.5328652156282473`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ListLinePlot", "[", 
+   RowBox[{
+    RowBox[{"RandomReal", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"60", ",", "80"}], "}"}], ",", 
+      RowBox[{"{", "60", "}"}]}], "]"}], ",", 
+    RowBox[{"AxesStyle", "\[Rule]", 
+     RowBox[{"Directive", "[", 
+      RowBox[{"Black", ",", "30"}], "]"}]}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], LineBox[CompressedData["
+1:eJw1kG1IU3EUxi8SIZZvOctszly2bJjYdDVT85m7u3o3N537FJZhSzBrqKjZ
+h7SLQYLiUrNU0MTIUNNAezNTM10Y+LZetK8SEpRQkr2QNqzonj9c/jz3Oc/v
+nPMPO1WQmevBMEzC3+/f/f+sJAWfD2vlTlgg/gD7oyyy2JYhak/0tDChl+PT
+Re2HWtsMc8svU9QS8POnC5rbraIOQk2GM9vRT74U5VUdK1Eg/m7cfgdPyRjx
+5XjEDUuHtZQPx1PlsaUxnvop4M36ODw3UT4C59Y45rGEfCUMo/Z8eRPxIrHY
+oNxnukN+FN47BXNOKfGjoR0wlahqqP4g7Ds+hzv7SKvQ5eKPX3lpFnUMZru4
+0sEi4sXCK+lm2/U54qkRe7JZbr9K8x3CdMyvinw3+Yfh23Tg2uQZ0ho0sCom
+6y3x4/CVvXTflUfvdQSDY+svsgKoXzwUawufSkYon4B7la+9ZQL5ibAW2QYe
+uGn+owiaVMmtHcRPQmRoVmCghvjAdPeHJcd2kScAZn+HZuY31WsxVOnVqr8h
+7iNogQX1eCFH/ZKRqu7b+TGP/GRUT7QrGvKovw78NmWnPU7kCTowD6u7X1XQ
+/CxqO5wGl12sF1jILPXaxAjK6zG4BYpVlnw9/HIKJc830/wcRiaWdc/8xXkE
+Dot7bFVfFimfAtlGo0d6J/kpaC3mjL3fKZ8KfllhKbMSPxU+0c2Nwau0Pw/O
+eHaZmSKfB+bvxkkFyhtQWre/59tW4htQF1LbOGum/YyofxPodWGI3seIUdl8
+r95F+TQku3XZT6Yon4YW342+zhDyTeif2yXZq6H+JkjGAy7+LKf9zMhd59oU
+Exn4AwpO79E=
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 61.},
+  AxesStyle->Directive[
+    GrayLevel[0], 30],
+  PlotRange->{{0., 60.}, {60.448658605139435`, 79.95962499939122}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{{3.532865283219099*^9, 3.532865292205936*^9}}]
+}, Open  ]]
+},
+WindowSize->{1600, 876},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 103, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[685, 25, 171, 3, 30, "Input"],
+Cell[859, 30, 470, 10, 24, "Message"],
+Cell[1332, 42, 132, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1501, 50, 953, 20, 69, "Input"],
+Cell[2457, 72, 1477, 32, 998, "Output"]
+}, Open  ]],
+Cell[3949, 107, 96, 1, 30, "Input"],
+Cell[4048, 110, 91, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[4164, 115, 665, 17, 50, "Input"],
+Cell[4832, 134, 2912, 42, 89, "Message"]
+}, Open  ]],
+Cell[7759, 179, 133, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[7917, 185, 388, 12, 50, "Input"],
+Cell[8308, 199, 1346, 29, 257, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

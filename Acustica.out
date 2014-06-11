@@ -1,0 +1,68 @@
+\BOOKMARK [0][-]{chapter.1}{Il Suono}{}
+\BOOKMARK [1][-]{section.1.1}{Concetti base Base}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Onde Sonore}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{Decibel}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.3.1}{Perch\350 si usano i decibel in acustica}{section.1.3}
+\BOOKMARK [1][-]{section.1.4}{Impedenza Acustica}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Livello Equivalente in Pressione}{}
+\BOOKMARK [1][-]{section.2.1}{Livello equivalente in Potenza}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Intensit\340}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Livello equivalente in Intensit\340}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{Livello Sonoro e Decibel}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{Diagrammi di Fletcher}{chapter.2}
+\BOOKMARK [1][-]{section.2.5}{Sorgenti}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.5.1}{Sorgente puntiforme isotropa}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.2}{Sorgente lineare isotropa}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.3}{Sorgenti Direzionali}{section.2.5}
+\BOOKMARK [1][-]{section.2.6}{Relazione tra i vari livelli equivalenti in aria}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.6.1}{Livello equivalente in pressione e in intensit\340}{section.2.6}
+\BOOKMARK [2][-]{subsection.2.6.2}{Livello in intensit\340 e in potenza}{section.2.6}
+\BOOKMARK [1][-]{section.2.7}{Nomenclatura tipica dell'Acustica}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Analisi ed interpretazione dei dati}{}
+\BOOKMARK [1][-]{section.3.1}{Analisi Statistica degli Eventi}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Analisi Spettrale}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.2.1}{Bande d'ottava}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{Bande in terza d'ottava}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.3}{Bande in N-esima di ottava}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.4}{Uso delle bande per distinguere gli eventi}{section.3.2}
+\BOOKMARK [1][-]{section.3.3}{Segnali oscillanti}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{Analisi Statistica}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Strumenti di Misura per l'Acustica}{}
+\BOOKMARK [1][-]{section.4.1}{Microfono}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Calibratore}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Pistonofono}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{Fonometro}{chapter.4}
+\BOOKMARK [1][-]{section.4.5}{Procedura di calibrazione}{chapter.4}
+\BOOKMARK [1][-]{section.4.6}{Registratore}{chapter.4}
+\BOOKMARK [1][-]{section.4.7}{Caratteristiche Generali della Strumentazione Acustica}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Norme Internazionali sugli strumenti di misura}{}
+\BOOKMARK [1][-]{section.5.1}{Legge 447/95 e DPCM 11/11/97}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Definizioni}{chapter.5}
+\BOOKMARK [1][-]{section.5.3}{Norme sulle procedure di misura}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.3.1}{Isolamento Acustico di Facciata}{section.5.3}
+\BOOKMARK [0][-]{chapter.6}{Materiali in Acustica}{}
+\BOOKMARK [1][-]{section.6.1}{Tempo di riverbero}{chapter.6}
+\BOOKMARK [1][-]{section.6.2}{Materiali fonoisolanti}{chapter.6}
+\BOOKMARK [1][-]{section.6.3}{Materiali Fonoassorbenti}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.3.1}{Risuonatori Acustici}{section.6.3}
+\BOOKMARK [2][-]{subsection.6.3.2}{Pannelli Vibranti}{section.6.3}
+\BOOKMARK [1][-]{section.6.4}{Scattering o Riflessione Diffusa}{chapter.6}
+\BOOKMARK [1][-]{section.6.5}{Campo sonoro Diffuso}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.5.1}{Limiti della formula di Sabine}{section.6.5}
+\BOOKMARK [2][-]{subsection.6.5.2}{Correzioni alla formula di Sabine}{section.6.5}
+\BOOKMARK [1][-]{section.6.6}{Eco}{chapter.6}
+\BOOKMARK [1][-]{section.6.7}{Barriere Acustiche}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.7.1}{Limiti dell'utilizzo di Barriere Acustiche}{section.6.7}
+\BOOKMARK [1][-]{section.6.8}{Conteggio dei Modi Normali di Oscillazione}{chapter.6}
+\BOOKMARK [1][-]{section.6.9}{Acustica ondulatoria}{chapter.6}
+\BOOKMARK [0][-]{chapter.7}{Propagazione di segnali sonori}{}
+\BOOKMARK [1][-]{section.7.1}{Effetti Atmosferici}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.1.1}{Vento}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.2}{Gradiente di temperatura}{section.7.1}
+\BOOKMARK [1][-]{section.7.2}{Formula Semiempirica per l'attenuazione}{chapter.7}
+\BOOKMARK [0][-]{chapter.8}{Modelli Acustici per il Rumore Stradale}{}
+\BOOKMARK [1][-]{section.8.1}{Modello C.S.T.B.}{chapter.8}
+\BOOKMARK [1][-]{section.8.2}{Modello C.E.T.U.R.}{chapter.8}
+\BOOKMARK [1][-]{section.8.3}{Modello del C.N.R. di Roma}{chapter.8}
+\BOOKMARK [1][-]{section.8.4}{Modello C.R.T.N}{chapter.8}
+\BOOKMARK [0][-]{chapter.9}{Soluzioni degli esercizi}{}

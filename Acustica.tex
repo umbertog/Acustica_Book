@@ -1,0 +1,1337 @@
+\documentclass[a4paper,10pt,openany]{book} %openany elimina le pagine bianche tra cpitolo e capitolo
+%\usepackage[utf8x]{inputenc}
+%\usepackage{ucs} %per le lettere accentate
+\usepackage[latin1]{inputenc}
+%\usepackage{url}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amssymb} %serve per fare le lettre degli insiemi, così da non doversi inventare i comandi
+\usepackage{fullpage}
+\usepackage{caption}
+\usepackage{textcomp}
+\usepackage{wasysym} %per il testo vario tipo il quadratino
+\usepackage{textcomp} %serve per usare °
+
+\newtheorem{esercizio}{Esercizio} % in questo modo ho definito un nuovo tipo di \begin che ci permette di numerare gli esercizi e di far funzionare i label e i ref
+\newcommand{\define}[1]{\underline{DEF} \textbf{#1}}
+\newcommand{\notabene}{{\textbf{N.B.}} \\}
+\newcommand{\udef}{\stackrel{def}{=}}
+%\newcommand{\esercizio}{\underline{\textbf{Esercizio:}}} %comando per inserire un esercizio (\label a parte)
+%\newcommand{\real}{\rm I\!R} %numeri reali
+
+%opening
+\title{Appunti di Acustica 1}
+\author{\href{mailto:umbertogiacomelli@yahoo.it}{Umberto Giacomelli} \href{mailto:mathren90@yahoo.it}{Mathieu Renzo}}
+\date{10/10/2011}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%\setcounter{chapter}
+
+
+\chapter{Il Suono}
+
+  \section{Concetti base Base}
+    
+    \define{Onda}: perturbazione che nasce da una sorgente e si propaga nel tempo e nello spazio, trasportando energia\footnote{in realtà la definizione è un po'più 
+    complessa ma per quello che trattiamo basta questo, per chi volesse approfondire \url{http://it.wikipedia.org/wiki/Onda_(fisica)}}\\
+
+    \define{Suono}: Variazione di pressione in un mezzo elastico\footnote{nel vuoto il suono non si può propagare!!!} a frequenza e lunghezza d'onda tali da renderlo 
+    percettibile\footnote{per l'orecchio umano la frequenza deve essere tra i 20 e i 20000 Hz}\\
+
+    \define{Rumore}: Un suono la cui frequenza, livello e/o variabilità nel tempo lo rendono fastidioso, disturbante, o 
+    dannoso.\footnote{il fastidio non è oggettivo, al contrario il disturbo viene oggettivizzato con misure fisiologiche e/o mediche (elettroencefalogramma, ecc\dots) 
+    e si distingue dal danno che lascia effetti irreversibili (e.g: acusia)}\\
+    \\
+    Il suono è caratterizzato da due principali grandezze fisiche: \textbf{Potenza}: che dipende dalla sorgente sonora, \textbf{Pressione}: che dipende dall'ambiente'
+    in cui ci si trova, es. in un ambiente chiuso (\textbf{riverberante}) il suono arriva all'osservatore da più parti e più volte; in un ambiente privo di riverbero 
+    (\textbf{anecoico}) il suono arriva all'osservatore solo dalla sorgente.
+
+  \section{Onde Sonore}
+    
+    Vista la definizione che abbiamo dato di suono, possiamo collegare le caratteristiche delle onde a fenomeni uditivi. 
+    Iniziamo col ricordare la definizione di \textbf{Lunghezza d'onda}:  $$\lambda \udef \frac{c_s}{\nu}$$
+    dove $v_p$ è la velocità di propagazione e $f$ la frequenza.
+
+    Data la definizione di $\lambda$ notiamo che che $\lambda\propto\frac{1}{\nu}$ e in oltre notiamo che, mentre le frequenze sono indipendenti dal mezzo di diffusione,
+    $\lambda$ no. Quindi quando si parla di lunghezza d'onda è opportuno specificare il mezzo in cui l'onda si diffonde.
+
+    Introdurre questa grandezza ci torna utile per studiare come il suono si diffonde nell'ambiente, e perché viene fermato o meno dagli ostacoli che incontra. 
+
+Data la relazione $\lambda\propto\frac{1}{\nu}$ si può dire che generalmente, in ogni mezzo, a frequenze alte corrispondono lunghezze d'onda
+    corte, viceversa a frequenze basse corrispondono lunghezze d'onda lunghe. Quindi ogni suono interagisce solo con ostacoli (fenditure, barriere, ecc.) di dimensioni 
+    caratteristiche dello stesso ordine di grandezza della sua lunghezza d'onda.\\
+
+
+  \section{Decibel} 
+    
+    Introduciamo il decibel:
+
+    \define{Decibel}
+    \begin{equation}
+      dB\udef 10\log (\frac{A}{A_0}) \label{decibel} 
+    \end{equation}
+    
+    Dove $A_0$ è la grandezza di riferimento, mentre $A$ è la grandezza misurata. Si osservi che {\bf i decibel sono un numero puro di conseguenza non possono essere usati come unità di misura}.\\Nel caso del suono $A=P^2$ e $A_0=P_0{}^2$ ovvero la pressione sonora misurata e la
+    pressione sonora di riferimento, quella che corrisponde alla pressione minima affinchè il suono sia udibile dell'uomo a frequenza $\nu= 1000 Hz =1 KHz$. Utilizziamo il quadrato invece della sola pressione
+    per evitare di avere un segnale a media nulla pur non essendo il segnale stesso identicamente nullo. Dato che il suono è infatti un onda può avere media nulla (es: sinusoide) e dato che un osservatore capta una media\footnote{in realtà quello che viene percepito è il livello RMS, si veda più avanti per una definizione} del segnale dobbiamo assicurarci che sia nulla solo se
+    il segnale stesso è nullo.\\
+    I decibel sono una scala logaritmica, di conseguenza bisogna fare attenzione nel fare somme. Es.
+
+    Se abbiamo 2 sorgenti identiche ($X_1=X_2=X$) e un osservatore equidistante da entrambe.Quanti decibel sente l'osservatore
+    quando sono attive entrambe(non ci preoccupiamo per il momento di eventuali effetti di interferenza)? Facciamo il conto: dobbiamo calcolare $X_1+X_2$ che {\bf non sarà come verrebbe da pensare $2X$} vediamo perché.\\ In realtà quando l'osservatore
+    riceve il segnale, riceve la somma dei 2 segnali quindi la \textbf{sommma delle pressioni} generate dai suoni. Quindi usando la formula inversa di \ref{decibel}:
+    \begin{equation}
+      \frac{P_1^2}{P_0^2}+\frac{P_2^2}{P_0^2}= 10^{\frac{X_{tot}}{10}}
+    \end{equation}
+    Poiché le due sorgenti abbiamo detto sono uguali $P_1=P_2$ quindi:
+    $$2\frac{P^2}{P_0^2}= 10^{\frac{X_{tot}}{10}} \Rightarrow X_{tot}=10 \log (2\frac{P^2}{P_0^2}) \Rightarrow X_{tot}=10\log (2) + 10\log (\frac{P^2}{P_0^2}) \Rightarrow      
+      X_{tot}=3+ \log (\frac{P^2}{P_0^2})$$
+    \begin{equation}
+      \Rightarrow X_{tot}=3+X_1=3+X_2
+    \end{equation}    
+    Generalizzando, la formula per calcolare i decibel di n sorgenti diverse è:
+    \begin{equation}
+    X_{tot}=10\log (\sum _{i=1}^n \frac{P_i^2}{P_0^2}) \label{decibelgen}
+    \end{equation}
+    Si osservi che di fatto per ottenere il livello del segnale totale {\textbf si effettua la somma tra le energie dei due segnali, che sono proporzionali al quadrato delle pressioni di ciascun 
+    segnale}, andiamo quindi a fare la somma \underline{dentro l'argomento del logaritmo}.\\\\
+
+    \begin{esercizio}
+      \label{es_livelliuguali}
+      Calcolare la somma di "$n$" livelli tutti uguali pari a "L".
+    \end{esercizio}
+
+    \begin{esercizio}
+      \label{es_livelli10}
+      Dimostrare che la somma di due livelli distanti $\sim10$ dB è pari a circa il massimo dei due livelli considerati.
+    \end{esercizio}
+
+
+
+
+    \subsection{Perchè si usano i decibel in acustica}
+      I motivi principali sono due:
+      \begin{enumerate}
+	      \item i livelli sonori udibili, a seconda delle frequenze vanno da $\sim20 \mu Pa$ a $\sim63 Pa$, cioè usando una scala lineare si
+		    dovrebbero considerare $\sim3$ milioni di divisioni: si crea la necessità di usare una scala logaritmica
+	      \item l'orecchio umano è sensibile all'energia di un segnale, proporzionale a $P^2$ e lavora esattamente in scala logaritmica: i dati in decibel risultano quindi di 
+		più facile interpretazione
+      \end{enumerate}   
+
+\section{Impedenza Acustica}
+Sappiamo che il suono è un'onda di pressione:
+$$ \xi = Acos(\omega t - kx) = A Re[e^{i(\omega t + kx)}]$$
+che si propaga in un mezzo elastico. Oltre alla forma funzionale dell'onda ($\xi$) le grandezze caratteristiche di un segnale sonoro sono la \textbf{pressione di scarto} $P=P_0-\tilde{P}(t)$ e la \textbf{velocità di particella} $v$. Questa è definita introducendo l'impedenza acustica, che come qualsiasi impedenza è il "rapporto tra la causa e l'effetto" (e.g. $Z=\frac{V}{I}$). L'impedenza acustica è:
+\begin{equation}
+ Z=\frac{P}{v}
+\end{equation}
+che dipende dal mezzo che stiamo considerando:
+\begin{itemize}
+\item $Z_{aria}=415$ $\frac{Kg}{m^2s}$
+\item $Z_{acqua}=146\cdot10^4$ $\frac{Kg}{m^2s}$
+\end{itemize}
+Sembrerebbe un cane che si morde la coda, ma abbiamo una espressione semplice per l'impedenza acustica quando dobbiamo trattare un'onda piana:
+$$ Z= \rho_0c_s $$
+dove $\rho_0$ è la densità del mezzo elastico in cui si propaga e $c_s$ la velocità del suono (che per un mezzo fissato dipende dalla temperatura, per l'aria: $c_s=331.5 T \pm 0.61 T \frac{m}{s}$ dove $T$ è la temperatura espressa in gradi centigradi). Per cui si ricava facilmente:
+\begin{equation} v=\frac{P}{c_s\rho_0}\label{vparticle}\end{equation}
+che è la velocità di particella.\\%ma vale solo per un'onda piana??????
+\notabene Si osservi che per le dimensioni caratteristiche dell'acustica le "particelle" in considerazione non sono i costituenti elementari del mezzo in cui si propaga il suono (atomi, molecole, etc..) ma agglomerati macroscopici di questi!
+
+  \chapter{Livello Equivalente in Pressione}
+    Definiamo il livello equivalente in pressione:\\
+    \define{Livello Equivalente}: \begin{equation} L_{eq}=10 log(\frac{1}{T_0}\int_{0}^{T_0} \frac{P(t)^2}{P_0^2} dt) \label{equivalente} \end{equation}
+    Dove $P(t)^2$ può essere misurato in dB o in dB(A)(si veda il seguito per la definizione di dB(A)), ed è la pressione di scarto \underline{rispetto alla pressione atmosferica}, in questo modo la divergenza del logaritmo a zero non dà problemi, dato che avviene ad una pressione che non corrisponde fisicamente ad un suono.
+    Il livello sonoro equivalente sintetizza in un unico dato (la media di tutti i livelli sonori nell'intervallo di tempo [0,$T_0$]) le informazioni relative ad un dato periodo di 
+    tempo. Questo ovviamente causa la perdita di informazioni, come l'ordine temporale dei segnali, il livello di ciascun singolo segnale misurato nell'intervallo, etc...\\
+
+    \begin{esercizio}\label{es_graficopressione}
+      Calcolare il livello equivalente del segnale rappresentato dal seguente grafico delle pressioni di scarto ($P_{atm}-P$) in funzione del tempo:
+      \begin{figure}[ht!]
+
+	      \begin{center}
+	      \includegraphics[width = \textwidth]{grafico_pressione.jpeg}
+	      \end{center}
+	      \label{es_Leq}
+
+      \end{figure}
+    \end{esercizio}
+\section{Livello equivalente in Potenza}
+Possiamo definire per analogia un livello equivalente usando non la pressione ma la potenza come grandezza di riferimento:
+\begin{equation} L_{eqW}=10log(\frac{W^2}{W_0^2}) \end{equation}
+dove $W_0 = 10^{-12} Watt$ è la potenza di riferimento adoperata solitamente.
+
+\section{Intensità}
+Come per una qualunque onda, possiamo definire l'intensità di un segnale sonoro come \textbf{energia per unità di tempo e superficie portata dal segnale}:
+\begin{equation} IdSdt = Edtc_sdS \Rightarrow I=Ec_s \end{equation}
+Si osservi che l'intensità può anche essere espressa in funzione della velocità di particella:
+\begin{equation} I = Pv =\frac{P^2}{\rho_0c_s}\end{equation}
+
+\subsection{Livello equivalente in Intensità}
+Possiamo quindi definire un livello equivalente anche con l'intensità come riferimento:
+\begin{equation} L_{eqI}=10log(\frac{I}{I_0}) \end{equation}
+Dove $I_0 = 10^{-12} \frac{Watt}{m^2}$ è l'usuale valore di riferimento.
+
+\section{Livello Sonoro e Decibel}
+    
+    La relazione tra il \textbf{Livello sonoro} e la \textbf{frequenza} si può rappresentare nel seguente grafico:
+
+  \begin{figure}[ht!]
+
+   \begin{center}
+    \includegraphics[width = \textwidth]{Livello_Pressione_Sonora.jpeg} %ho scoperto che se si mettono nomi senza spazzi non compaio nel pdf
+   \end{center}
+   \caption{Livello Frequenza \label{Livello/Frequenza}}
+
+  \end{figure}
+
+    La linea verde inferiore indica la \textbf{Soglia di Udibilità}: tutti i suoni il cui livello e frequenza si trovano al disotto di qulla linea non sono udibili dall'uomo.
+
+    La linea rossa in alto rapprenta la \textbf{Soglia di Rischio} il limite oltre il quale il segnale causa danno. Si osservi che entrambe le soglie risultano essere \textbf{funzioni della frequenza $\nu$}, e non costanti.
+
+   % La zona interna a queste due linee contiene tutti i suoni che siamo in grado di sentire senza subire danni e un particolare si distinguono le aree che caratterizzano la musica e il parlato.
+
+    \begin{esercizio}\label{es_equivalente8h} 
+      Calcolare il livello sonoro equivalente di un segnale rilevato con un fonometro nell' arco di tempo di 8h:
+      \begin{itemize}
+	      \item {$2 h \rightarrow 90$ dB}
+	      \item {$1 h \rightarrow 70$ dB}
+	      \item {$3 h \rightarrow 85$ dB}
+	      \item {$2 h \rightarrow L$ dB} 
+      \end{itemize}
+      dove il livello sonoro $L$ delle ultime due ore è incognito, e determinare in quali condizioni questo sia trascurabile.\\
+      Si osservi che \underline{a livello energetico} possiamo dimezzare il livello di un segnale (cioè sottrargli $3 dB$) raddoppiando la sua durata temporale.
+    \end{esercizio}
+
+
+\section[Diagrammi di Fletcher]{Diagrammi di Fletcher\footnote{vengono detti anche curve isofoniche}}
+
+Sperimentalmente negli anni 40 sono stati realizzati dei diagrammi per studiare la {\textit isosensazione sonora}: presa una frequenza di riferimento ed un livello 
+  (es: $\nu=1 KHz$, $L=20 \mu Pa$) vennero fatti ascoltare a numerose persone suoni con frequenze diverse e livello variabile per tracciare un grafico di quando le persone 
+  "sentivano il suono nello stesso modo".
+
+  \begin{figure}[ht!]
+
+    \begin{center}
+      \includegraphics[width = \textwidth]{Fletcher.jpeg}
+    \end{center}
+    \caption{Diagramma di Fletcher \label{fletcher}}
+
+  \end{figure}
+
+  Tale esperimento ovviamente non è ripetibile (la sensibilità dell'orecchio umano cambia col tempo) né oggettivo, quindi riproducibile (ogni persona ha sensazioni sonore diverse), ma facendo 
+  una media su un campione statistico molto grande si sono ottenute comunque informazioni significative. In particolare:
+  \begin{itemize}
+	  \item Il grafico presenta una "buca" alle frequenze a cui l'orecchio umano è maggiormente sensibile (basta quindi un livello minore per avere la stessa sensazione)
+	  \item tale buca sale con l'età fino ad appiattirsi
+	  \item l'orecchio umano non risponde agli stimoli sonori in modo lineare
+  \end{itemize}
+  Si pone quindi il problema nell'effettuare le misure in acustica di bilanciare la linearità degli strumenti elettronici per avere dati compatibili con le sensazioni umane.
+  Per fare questo sono state introdotte curve correttive che stabiliscono la pressione da sottrarre alla pressione misurata per simulare il comportamento dell'orecchio umano.
+
+  Concettualmente, dato che la correzione è una funzione della frequenza, va fatta la trasformata di Fourier, applicata la correzione e poi antitrasformare per riavere il 
+  segnale, ma solitamente questo viene fatto direttamente da un circuito nello strumento e lo sperimentatore non deve preoccuparsene. Di fatto servirebbe una curva 
+  correttiva per ogni pressione di riferimento da cui partiamo (ovvero una curva correttiva per ogni diverso fenomeno da studiare, es: inquinamento acustico per veicoli, 
+  livello sonoro di una aula, etc..), ma questo renderebbe le cose estremamente complicate da gestire. Di fatto viene usata sempre la curva $D(\nu)$ corrispondente alla 
+  correzione media per frequenza di riferimento $\nu=1 KHz$ e pressione di riferimento $P=20 \mu Pa$. Il livello misurato con la correzione viene spesso indicato col simbolo $dB(A)$.
+  Ovviamente la curva correttiva $D(\nu)$ si ottiene sottraendo al livello misurato (che è una retta costante cul grafico dB vs. $\nu$) la curva del diagramma di fletcher.
+  \begin{figure}[ht!]
+    \begin{center}
+      \includegraphics[width = \textwidth]{Correzione.jpeg}
+    \end{center}
+    \caption{Curve di correzione \label{correzione}}
+  \end{figure}
+
+  \begin{esercizio}\label{es_Dnu}
+    Calcolare il livello equivalente in $db(A)$ di un segnale caratterizzato da: (nell'ultima colonna sono forniti i valori della curva $D(\nu)$ in corrispondenza delle frequenze):
+    \begin{center}
+	    \begin{tabular}{lll}
+		    Livello dB & $ \nu $ Hz & D($\nu$) \\
+		    $80$ & $200$ & $-10$ \\
+		    $70$ & $500$ & $-5$\\
+		    $60$ & $1000$ & $0$ \\
+	    \end{tabular}
+	    \captionof{table}{Segnale}
+    \end{center}
+  \end{esercizio}
+
+\section{Sorgenti}
+Definiamo in questa sezione alcuni tipi di sorgenti ideali utili per modellizzare fenomeni acustici.
+\subsection{Sorgente puntiforme isotropa}
+Definiamo \underline{sorgente puntiforme isotropa} una sorgente che emette allo stesso modo (stesso spettro, stesso livello, etc..)in ogni direzione e dalle dimensioni lineari trascurabili rispetto alla distanza sorgente-rilevatore. E' quindi una sorgente a simmetria sferica.
+\subsection{Sorgente lineare isotropa}
+Definiamo \underline{sorgente lineare isotropa} una sorgente che emette un segnale con simmetria azimutale (invarianza per rotazioni attorno all'asse della sorgente). E' quindi una sorgente a simmetria cilindrica (e.g: strada).\\\\
+
+Come abbiamo visto più sorgenti uguali e attive contemporaneamente per lo stesso intervallo di tempo contribuiscono in termini di dB secondo \ref{decibelgen}.
+    Ma se le sorgenti non sono contemporaneamente attive, e non hanno lo stesso livello? Abbiamo già visto che un approccio efficace è quello fornito da \ref{equivalente}.
+
+\subsection{Sorgenti Direzionali}
+Ovviamente non tutte le sorgenti reali sono isotrope o caratterizzate da evidenti proprietà di simmetria. In generale è utile quindi definire la \textbf{direzionalità} di una sorgente:\\
+
+\define{Direttività:} 
+\begin{equation}
+  D\equiv D(\theta,\varphi) \udef \frac{E_{reale}}{E_{isotropa}} \equiv \frac{P^2_{reale}}{P^2_{isotropa}}
+\end{equation}
+Ovvero la direttività è il rapporto tra l'energia misurata ad un certo angolo solido $\Omega\equiv\Omega(\theta,\varphi)$ ($E_{reale}$) e l'energia che avrebbe il segnale se 
+emettesse in ogni direzione proprio all'energia $E_{reale}$ misurata ($E_{isotropa}$). L'equivalenza tra energia e quadrato della pressione differenziale rende ovvia la seconda 
+definizione possibile. La direttività di una sorgente permette quindi di vedere in che modo emette (supposta nell'origine del sistema di coordinate sferiche che usiamo per 
+misurare $\theta$ e $\varphi$) in funzione della direzione da cui rileviamo il segnale.
+Possiamo inoltre definire l'\underline{indice di direttività} che dà la correzione sul livello in potenza $L_{eqW}$ nota la direttività della sorgente e il livello in pressione:\\
+
+\define{indice di direttività} 
+\begin{equation} 
+ DI \equiv DI(\theta,\varphi)\udef 10log(D(\theta,\varphi)) 
+ \label{indicedirdef}
+\end{equation}
+
+\section{Relazione tra i vari livelli equivalenti in aria}
+\subsection{Livello equivalente in pressione e in intensità}
+Per definizione abbiamo:
+$$L_{eqI}=10log(\frac{I}{I_0})$$
+Usando la relazione che lega $I$ alla velocità di particella $v$ si ha:
+$$L_{eqI}=10log(\frac{P^2}{\rho_0c_sI_0})=10log(\frac{P^2}{P_0^2})+10log(\frac{P_0^2}{\rho_0c_sI_0})$$
+Dato che $I_0=10^{-12}$ viene bilanciato da $P_0^2$ che ha lo stesso ordine di grandezza si ottiene un ultimo addendo trascurabile per quasi tutte le temperature, quindi in \underline{aria} vale:
+\begin{equation}L_{eqI} \approx L_{eqP}\end{equation}
+\subsection{Livello in intensità e in potenza}
+Si osservi inanzitutto che nota la relazione tra il livello in pressione e quello in intensità, basta ricavare la relazione di uno di questi col livello in potenza per determinare tutti i legami possibili.\\
+Il legame tra il livello in intensità e in potenza dipende dalla sorgente che consideriamo (indichiamo con $r$ la distanza rilevatore-sorgente):\begin{itemize}
+\item \textbf{Sorgente puntiforme isotropa:} Per definizione di intensità, usando l'isotropia della sorgente:
+$$I=\frac{W}{4\pi r^2}$$ 
+Per cui:
+$$L_{eqP}\approx L_{eqI}=10log(\frac{W}{4\pi r^2 I_0})= L_{eqW} - 11 - 20log(r)$$ usando che $log(4\pi)\approx1.1$.
+\item \textbf{Sorgente lineare isotropa:} Il ragionamento è analogo a quello precedente, solo che l'area chiusa su cui integramo $W$ per ottenere $I$ è data da $2\pi r h$ e trascuriamo i "tappi" che non danno contributo all'intensità, dato che per ipotesi abbiamo assunto simmetria cilindrica. Si ottiene:
+$$L_{eqP}\approx L_{eqI}=10log(\frac{W}{2 \pi r h I_0})= L_{eqW} - 8 - 10log(r)$$
+\item \textbf{Sorgente puntiforme \underline{non} isotropa:} Supponendo noto l'indice di direttività (vedi \ref{indicedirdef}) della sorgente, basta sommare quest'ultimo alla relazione precedentemente ricavata nel caso di sorgente isotropa:
+$$L_{eqP}\approx L_{eqI}=10log(\frac{W}{4\pi r^2 I_0})= L_{eqW} - 11 - 20log(r) + DI$$
+\item \textbf{Sorgente lineare \underline{non} isotropa:} La situazione è esattamente come nel caso di sorgente puntiforme:
+$$L_{eqP}\approx L_{eqI}=10log(\frac{W}{4\pi r^2 I_0})= L_{eqW} - 11 - 20log(r)+ DI$$
+\end{itemize}
+
+\section{Nomenclatura tipica dell'Acustica}
+Definiamo alcune nomenclature tipiche dell'acustica:\begin{itemize}
+\item \underline{\textbf{Tono puro:}}segnale di livello superiore di almeno $5 dB$ rispetto agli altri caratterizzato da una frequenza facilmente distinguibile.
+\item \underline{\textbf{Rumore Bianco:}} segnale piatto in frequenza, ovvero che ha lo stesso livello in ogni frequenza.
+\item \underline{\textbf{Rumore Rosa:}} segnale piatto in bande d'ottava, ovvero ha lo stello livello per ogni banda.
+\end{itemize}
+    \notabene Tutti gli strumenti matematici sopra definiti, e che definiremo in seguito sono inutili se l'accuratezza nel raccogliere dati è scarsa, in particolare una imprecisione nella stima
+    della durata temporale di un segnale può falsare la misura nonostante essa sia accurata al millesimo di dB. Sul campo si deve poi tener conto del fatto che anche il corpo umano interferisce
+    con le misure, in particolare è un ostacolo tutt'altro che trascurabile per le frequenze corrispondenti a lunghezze d'onda di $\sim30 cm$(che sono approssimativamente le dimensioni 
+    caratteristiche del torace).
+
+\chapter{Analisi ed interpretazione dei dati}
+  Quando in un campionamento vengono effettuate delle misure dobbiamo distinguere tra il suono proveniente dalla sorgente di interesse, e i seguenti:
+  \begin{itemize}
+	  \item \define{Rumore Ambientale:} è la somma di tutti i segnali presenti nell'ambiente dove è stata fatta la misura
+	  \item \define{Rumore Residuo:} è il segnale rimanente una volta sottratto (almeno idealmente) quello della sorgente di interesse.
+	  \item \define{S.E.L.}: è l'abbreviazione di Single Event Level, ovvero è il livello equivalente concentrando tutta l'energia del segnale in un tempo unitario. In pratica si considera che il periodo in cui si effettua
+		la misura sia un secondo.
+  \end{itemize}
+
+  \section{Analisi Statistica degli Eventi}
+
+  Dato un grafico del livello in funzione del tempo, potremmo voler individuare da questo il \textbf{numero di eventi} che sono occorsi. Dobbiamo cioè fare una \textbf{analisi statistica 
+  degli eventi}.\\
+Per individuare un evento (e.g: passaggio di un mezzo pesante in una via) possiamo fissare una \textit{durata temporale minima} e un \textit{livello equivalente di riferimento} ed 
+    analizzare l'andamento del segnale rilevato.\\ Ogni qual volta si presenterà un picco che supera il livello di riferimento fissato per un tempo maggiore della durata temporale minima fissata, diremo che è avvenuto un evento. Questo metodo 
+    comporta vari errori sistematici:
+    \begin{itemize}
+	    \item errore nella stima del livello equivalente di riferimento, o della durata temporale minima (\underline{oss:}può portare sia ad una sovrastima che ad una sottostima del numero di eventi)
+	    \item due eventi molto vicini nel tempo, o addirittura contemporanei verranno contati come un unico evento (\underline{oss:} questo genere di errore porta solo ad una sottostima)
+    \end{itemize}
+    Per migliorare il nostro metodo possiamo confrontare il grafico livello vs. tempo che stiamo studiando con un grafico ottenuto \textbf{sottraendo il livello equivalente e la durata 
+    temporale di ogni picco che abbiamo contato come evento}. Il grafico così ottenuto sarà una stima del rumore residuo, e permetterà di capire meglio se ci sono state grosse imprecisioni 
+    dovute agli errori di cui sopra. Individuiamo così una ulteriore causa di errore (anche questo sistematico): 
+    \begin{itemize}
+	    \item il rumore residuo potrebbe non essere costante.
+    \end{itemize}
+    Questo metodo funziona bene per contare il numero di eventi sonori caratterizzati da un livello molto alto e una durata temporale relativamente breve (e.g: passaggio di un treno, sparo, 
+    decollo di un aereo, etc\dots).
+    \section{Analisi Spettrale}
+    \define{Spettro:} è l'andamento in frequenza di un segnale.\\
+    Quando il grafico del livello in funzione del tempo non ci dà sufficienti informazioni per specificare un segnale si procede con l'analisi spettrografica, cioè delle frequenze contenute
+    in questo. Significa costruire un grafico da $ \mathbb{R}^2 \rightarrow \mathbb{R}$ di $dB(A)\equiv dB(A)(t,\nu)$.\\\\
+    
+    \begin{figure}[ht!]
+    	\begin{center}
+    	\includegraphics[ scale = .3 ]{hertz_time_db.jpeg}\\
+    	\end{center}
+    \end{figure}
+    Questo permette di distinguere le varie frequenze di un segnale ed eventualmente scomporlo in diverse sorgenti (e.g. passaggio di un treno, fischio della locomotiva). Per facilitare 
+    l'analisi in frequenza si divide lo spettro in \textbf{bande}.\\
+    ********************************************************************************************\\
+    GRAFICO\\
+    ********************************************************************************************\\
+
+    \subsection[Bande d'ottava]{Bande d'ottava\footnote{il nome deriva dal numero di tasti sul pianoforte}}
+      Lo spettro viene diviso in intervalli (solitamente 10) individuati da frequenze agli estremi caratterizzate da \textbf{rapporto costante}: 
+      \begin{equation} \frac{\nu_{n+1}}{\nu_n} = 2 \label{frequenzebandeottava}\end{equation}
+      Si noti che questo comporta necessariamente che la larghezza delle bande \textbf{non è costante}: ad esempio tra $10$ e $20$ Hz la larghezza della banda è $10$ Hz, tra $1$ KHz e $2$ KHz è 
+      di $1$ KHz, ovvero $1000$ Hz, cioè mille volte la precedente!
+      Per ogni banda viene individuata la \textbf{frequenza centrale}, definita come \textbf{media \underline{geometrica} delle frequenze agli estremi della banda}. Tutta l'energia della banda 
+      viene attribuita alla frequenza centrale.
+    
+    \subsection{Bande in terza d'ottava}
+      Permettono una analisi più fine delle bande d'ottava: ciascuna banda d'ottava viene divisa in tre parti. Ovviamente affinché venga mantenuto il rapporto tra le frequenze agli estremi di 
+      ogni ottava espresso dalla \ref{frequenzebandeottava}, le frequenze limite di ogni banda in terza d'ottava dovranno rispettare la condizione: 
+      \begin{equation} 
+	\frac{f_{n+1}}{f_n} = \sqrt[3]{2} 
+      \end{equation} di modo che il prodotto delle tre frequenze limite in terzi d'ottava rispetti la \ref{frequenzebandeottava}, ovvero di modo che l'energia totale della banda d'ottava sia pari alla somma delle energie di ogni tripletta di bande in terza d'ottava. Ovviamente 
+      come prima la larghezza di ciascuna banda non è costante.\\
+      Per ognuna delle bande così ottenute si definisce al frequenza centrale, che mantiene il suo ruolo di rappresentante della banda.\\
+\subsection{Bande in N-esima di ottava}
+Quando detto nel paragrafo precedente si generalizza immediatamente per una banda in N-esima di ottava:
+\begin{equation}\frac{f_{n+1}}{f_n} = \sqrt[N]{2} 
+      \end{equation}
+    \subsection{Uso delle bande per distinguere gli eventi}
+      Solitamente un evento sonoro è caratterizzato da una distribuzione non uniforme in frequenza, e nei casi "standard" tale distribuzione risulterà essere gaussiana intorno ad una frequenza 
+      caratteristica dell'evento.
+      
+      	\begin{minipage}{.5\textwidth}
+		\includegraphics[width = \textwidth]{Gaussiane.jpeg}
+		Le prime due gaussiane sono indistiguibili mentre la terza è individuabile\\
+	\end{minipage}
+	\begin{minipage}{.5\textwidth}
+		\includegraphics[width=\textwidth]{gaussiane_2.jpg}\\
+	\end{minipage}\\
+      Se plottiamo su un istogramma distributivo l'input di una registrazione di più eventi, questi saranno distinguibili solo se le "semilarghezze a metà altezza" delle gaussiane relative ai due 
+      eventi non si sovrappongono. In questo caso siamo in grado di distinguere i due eventi. Se questo non avviene possiamo cercare di raffinare l'analisi considerando bande in frequenza più "strette", ovvero possiamo diminuire il rapporto $\frac{\nu_{n+1}}{\nu_n}$.
+
+  \section{Segnali oscillanti}
+    Definiamo alcune grandezze caratteristiche per un generico segnale oscillante $x(t)$ che verranno utilizzate nel seguito.\\
+    \define{Livello RMS}: 
+    \begin{equation} 
+      L_{rms} = \sqrt{\frac{1}{T}\int_0^T{x^2(t)dt}}\label{RMS} 
+    \end{equation}
+      rappresenta il livello efficace del segnale.\\
+    \define{Livello Medio}: 
+    \begin{equation}
+      L_{med} = \frac{1}{T}\int_0^T{|x(t)|dt} \label{Lmed}
+    \end{equation}
+
+    Osserviamo che si definiscono con quadrato e modulo nell'integranda per evitare che un segnale non nullo abbia media, o valore RMS nullo.\\Vale sempre: $$L_{rms} \geq L_{med} $$
+
+  \section{Analisi Statistica}
+    Anche in acustica i metodi statistici vengono adoperati per individuare segnali. Possiamo selezionare una certa ampiezza in decibel (e.g: $5 dB$) e spazzare il grafico Livello in 
+    funzione del tempo facendo scorrere la nostra fascia da $20 dB$\footnote{si parte da $20dB$ e non da 0 perché la sensibilità di un fonometro non scende sotto i $20dB$} al massimo assoluto del nostro segnale. Così facendo possiamo contare "quanta percentuale" (in termini temporali)
+    del segnale è compresa nella fascia di livello selezionata.
+
+    \newpage%serve altrimente ottimizza troppo glli spazzi e mette i grafici dove vuole lui
+
+    \begin{figure}[ht!]
+    \begin{center}
+	\includegraphics[width = \textwidth]{Segnale_random_spazzata.jpeg}
+	\caption{"Spazzata"}
+	\label{spazzata}
+    \end{center}
+    \end{figure}
+
+    Associando ad ogni fascia la percentuale temporale del segnale che è compresa in tale fascia si può costruire un \textbf{ISTOGRAMMA DISTRIBUTIVO}: ci dice fissato un intervallo di 
+    livello, quanta percentuale temporale il segnale è stato in quell'intervallo.
+
+
+    \begin{figure}[ht!]
+    \begin{center}
+	\includegraphics[scale=.5]{istogrammadistributivo.jpg}
+	\captionof{figure}{Istogramma Distributivo}
+	\label{istogrammadistributivo}
+    \end{center}
+    \end{figure}
+    Integrando un istogramma distributivo si otterrà una "curva" (vedi esercizzi sotto) (\underline{oss:}necessariamente decrescente) che permette di definire i coefficienti $L_N$ che 
+    indicano per ogni livello L la percentuale N di tempo in cui il segnale ha superato (o eventualmente solo ragiunto) tale livello (spesso i coefficienti $L_N$ vengono detti coefficienti 
+    cumulativi o percentili). Si osservi che la curva dei coefficienti $L_N$ corrisponde all'integrale dell'istogramma distributivo dal livello considerato in poi.
+
+    \newpage
+
+    \begin{figure}[ht!]
+    \begin{center}
+	    \includegraphics[scale=.5]{Cumulativa.jpeg}
+	    \captionof{figure}{Coefficienti Cumulativi $L_N$}
+	    \label{LN}
+    \end{center}
+    \end{figure}
+
+    \underline{oss:}
+    \begin{itemize}
+	\item $L_{10}$ è un livello che è stato superato nel 10\% delle volte: corrisponde quindi ad un picco del segnale.
+	\item $L_{90}$ è un livello che è stato quasi sempre superato: corrisponderà al rumore di fondo.
+    \end{itemize}
+
+    \begin{esercizio} \label{es_isolaseganle} 
+      Si consideri il miglior metodo per isolare un segnale proveniente da una sorgente di interesse stazionario nel caso venga disturbato da rumore ambientale non uniforme 
+      e con picchi molto alti rispetto al livello della sorgente di interesse. Si supponga di non poter agire né sulla sorgente né sulla fonte del disturbo ambientale (come nel caso di 
+      misure sul campo).
+    \end{esercizio}
+    
+    \newpage
+    
+    \begin{esercizio} \label{es_distribuzioni1} 
+      Tracciare l'istogramma distributivo e il grafico dei coefficienti cumulativi per il seguente segnale:
+      \begin{figure}[ht!]
+	\begin{center}
+	  \includegraphics[width = \textwidth]{esercizio.jpeg}
+	\end{center}
+      \end{figure}
+      \end{esercizio}
+    
+  \begin{esercizio} \label{es_distribuzioni2} 
+      Dati i seguenti valoti in $dB(A)$ disegnare l'stogramma distributivo e il grafico cumulativo, usando come intervallo 5dB
+   \begin{figure}[ht!]
+    \begin{center}
+      \includegraphics[width = \textwidth]{dati_a_caso.jpeg}
+    \end{center}
+   \end{figure}
+  \end{esercizio}
+
+
+\chapter{Strumenti di Misura per l'Acustica}
+  Introduciamo una presentazione dei principali strumenti di misura con i quali si ha a che fare in acustica. 
+  
+  \section{Microfono}\label{mic}
+    Il microfono fa parte della categoria dei \underline{trasduttori}, ovvero dei dispositivi capaci di \textbf{trasformare un segnale qualsiasi in un segnale elettrico} (si noti che anche le 
+    orecchie e tutti gli organi di senso sono trasduttori biologici). Il modo in cui un segnale sonoro (ovvero un'onda di pressione) viene trasformato in un segnale elettrico da un microfono è 
+    concettualmente piuttosto semplice: il microfono è un condensatore piano con carica fissa sulle armature, contenente l'aria come dielettrico e di capacità variabile. Una delle due armature 
+    infatti è costituita da una sottile membrana che vibra a causa dell'onda di pressione in ingresso (cioè a causa del suono). Nonostante l'ampiezza della vibrazione sia in genere molto 
+    piccola ($\sim\mu m$), questo è sufficiente a causare una variazione di potenziale tra le armature generando così il segnale elettrico. Abbiamo infatti per la differenza di potenziale $V$ 
+    tra le armature: 
+    $$V = \frac{Q}{C} $$
+    dove $Q$ è la carica sulle armature e $C$ la capacità del condensatore, che si può esprimere come:  
+    $$C = \epsilon \frac{S}{d} $$ 
+    dove $\epsilon$ rappresenta la costante dielettrica del materiale tra le armature (nel caso del microfono è semplicemente aria e vale $\epsilon \approx 1$), $S$ è l'area superficiale delle 
+    armature, e $d$ la distanza tra esse. E' proprio quest'ultima ad essere variabile. Si ottiene quindi la relazione tra differenza di potenziale e distanza tra le armature:
+    $$ V = \frac{Q}{\epsilon S}d $$
+
+    Ovviamente la membrana (che costituisce l'armatura mobile del condensatore) è molto fragile e viene solitamente protetta con una griglia. Teoricamente dovremmo preoccuparci che la 
+    griglia non perturbi il suono in ingresso nel microfono, ma il passo di queste è così piccolo che crea interferenza (diffrazione) su onde di frequenze fuori dal range dell'udibile, di 
+    conseguenza la presenza di tale griglia protettiva risulta ininfluente per i segnali che ci interessano. Inoltre per evitare che l'aria dietro la membrana crei un ostacolo per l'onda di 
+    pressione incidente è presente tra le armature un \textbf{foro di equalizzazione}, che mette in comunicazione il condensatore con l'ambiente esterno. In questo modo tra le armature c'è 
+    la stessa pressione che all'esterno e non si ha una eccessiva resistenza della membrana all'onda incidente. Si osservi che questo significa che un microfono misura 
+    \underline{differenze di pressione}, non pressioni, e che le misure sono \underline{indipendenti dal valore $P_{atm}$ della pressione atmosferica}.\\
+    Alcuni microfoni per misurazioni esterne (cioè di tipo 1 o 2 - vedi più avanti) devono essere dotati di \textit{cuffie antivento} ed altri dispositivi di protezione dai vari fattori ambientali. Si noti che tra i fattori atmosferici che possono influenzare una misura acustica i più importante sono \textbf{vento}, che può deviare i "raggi sonori" (ovvero la direzione di propagazione del suono), e il \textbf{gradiente in temperatura}, che modifica la densità, e quindi le proprietà elastiche del mezzo in cui si propaga il suono. In ogni caso con un apparato stumentale standard non possono essere effettuate misure all'esterno con vento maggiore di $5 m/s$.\\
+    Altri fattori come umidità,etc.. danno correzioni al secondo ordine trascurabili in prima istanza.\\
+Si osservi che la risposta di un microfono è lineare alle basse frequenze e per avere una risposta migliore servirà un microfono di dimensioni caratteristiche dell'ordine della lunghezza d'onda $\lambda$ - per massimizzare l'interferenza. Per alte frequenze si avrà un calo improvviso della risposta quando si ha $\nu$ tale che $\lambda$ è dell'ordine del passo della grata protettiva (di solito avviene per $\nu$ fuori dal range udibile).\\
+    Prima di parlare della procedura di 
+    calibrazione %(vedi \ref{Calibrazione})
+    di un microfono introduciamo altri strumenti che entrano in gioco in tale procedura.
+
+  \section{Calibratore} 
+    E' un generatore di segnali acustici di alta precisione: genera un onda di pressione di livello noto ($L=94 dB$, ma di solito si considera $L=93.8$ per compensare gli 
+    errori dovuti al montaggio del calibratore sul fonometro-vedi più avanti) per una frequenza nota ($1 KHz$). Il calibratore è dotato di una grande precisione: eventuali errori sono più 
+    facilmente dovuti ad una errata calibrazione degli altri strumenti che ad un malfunzionamento del calibratore. Per questo di solito per verificare la calibrazione si usano due diversi 
+    calibratori su un unico strumento
+
+  \section{Pistonofono} 
+    Come il calibratore, genera segnali noti permettendo di verificare il funzionamento di uno strumento. Al contrario del calibratore però, il pistonofono genera segnali 
+    per via puramente meccanica e non acustica. Inoltre solitamente può generare segnali a due frequenze diverse ($250 Hz$ e $1000 Hz$), permettendo di verificare che lo strumento sia calibrato 
+    anche per regioni dello spettro molto distanti tra loro ($\sim$ un ordine di grandezza). Questa maggiore versatilità implica ovviamente un maggiore costo del pistonofono rispetto ad un 
+    calibratore. Esistono poi strumenti ancora più precisi che permettono di generare segnali a più frequenze e di diverso livello, che hanno un costo ancora maggiore.
+
+  \section{Fonometro} E' sostanzialmente un voltmetro di altissima precisione.
+    \begin{figure}[ht!]
+      \begin{center}
+	\includegraphics[scale = .9]{SBF.jpeg}
+      \end{center}
+      \caption{Schema a Blocchi di un Fonometro \label{fonometro}}
+    \end{figure}
+
+    In punta viene inserito il \underline{microfono}. Subito dipo si ha un \underline{circuito di preamplificazione} che serve ad adattare l'impedenza in ingresso dello strumento per evitare che 
+    il segnale in arrivo dal microfono venga riflesso o perso. Si noti che il circuito di preamplificazione agisce solo sull'impedenza del fonometro stesso, adattandola al segnale in arrivo, ma 
+    non modifica in alcun modo il segnale stesso. Il \underline{rilevatore di sovraccarico} serve a verificare che lo strumento non vada né in \textbf{overload} (ovvero che il segnale sia 
+    troppo alto per il range dello strumento) né in \textbf{under range} (ovvero che il segnale sia al contrario troppo debole).Se si presenta uno di questi casi il fonometro lo segnala allo 
+    sperimentatore evitando misure fallaci. Si ha anche un ramo con dei \underline{filtri} (passa alto, passa basso e/o banda) che permettono di selezionare alcune frequenze del segnale (si 
+    noti che questo è diventato un segnale elettrico dopo la trasduzione ad opera del microfono). Questo permette entro certi limiti di usare il fonometro anche come spettrometro, solo però nel 
+    caso in cui il segnale sia \textbf{uniforme in livello e costante nel tempo}. Infatti una variabilità del segnale in livello, o una variazione della frequenza nel tempo renderebbero 
+    irrilevante qualunque misura spettrografica realizzata col fonometro. Questo infatti può lavorare solo su una frequenza (o un range di frequenze) alla volta, impostando l'opportuno filtro, e 
+    non su tutte le frequenze contemporaneamente come un vero e proprio spettrometro. Si ha poi il \underline{circuito di ponderazione} che permette di applicare le curve correttive (vedi la 
+    sezione sui diagrammi di fletcher) ($D(\nu)$, o altre). Questo circuito può eventualmente essere disattivato se non si vuole che lo strumento riproduca l'udito umano (è utile ad esempio per 
+    fare "diagnosi" su macchinari industriali per via acustica). Si passa poi da un \underline{amplificatore}: dato che lo spostamento della membrana del microfono è piccolissimo il segnale in 
+    ingresso nel fonometro è anche esso molto basso, e deve essere amplificato. Si entra poi nella parte dello strumento dove il segnale viene processato. Due circuiti indipendenti 
+    (\underline{RMS slow/fast} e \underline{Picco}) ricavano dal segnale il suo valore RMS \ref{RMS} e l'ampiezza picco-picco. La sigla "slow/fast" indica due possibili modalità di elaborazione: 
+    una rapida che permette, nel caso di fonometro analogico, di evitare che la lancetta schizzi avanti e indietro rendendo impossibile la lettura nel caso di segnali molto variabili, ed una 
+    più lenta ma precisa da usare per segnali costante nel tempo. Il segnale viene successivamente convertito da analogico a digitale mediante un campionamento (\underline{A/D converter}) e
+    passa da un \underline{microprocessore} che permette di compiere varie operazioni. Da lì il segnale può essere riconvertito in analogico (\underline{D/A converter}) per essere mandato ad 
+    altri strumenti o visualizzato sul display.
+    Il fonometro è realizzato con una simmetria azimutale intorno al suo asse per avere la migliore risposta possibile indipendentemente dalla posizione della sorgente sonora, e per minimizzare 
+    in particolare la distorsione su un segnale a provenienza frontale.
+    Ovviamente la sua risposta non è uguale ad ogni frequenza, ed in particolare questa può essere discussa studiando i grafgraficoici polari che indicano la distorsione di un segnale di frequenza 
+    data in funzione del suo angolo di provenienza rispetto all'asse del fonometro stesso.
+    \begin{figure}[ht!]
+    \begin{center}
+      \includegraphics[scale = .5]{polari.jpeg}
+    \end{center}
+      \caption{Grafici della misura di diversi tipi di Fonometro di uno stesso suono fatta ruotandoli \label{garficopolari}}
+    \end{figure}
+
+    Si osservi che un fonometro misura i \textbf{livelli in dB} di un segnale sonoro, ma non registra il suono stesso.
+    Il range di affidabilità in livello di un fonometro è $\sim110 dB$, solitamente dai dai 30 ai 140 dB, ed è determinato non solo dalle caratteristiche del microfono inserito in punta, ma anche dall'elettronica dello strumento (che determina rate di campionamento, amplificazione del segnale di tensione creato dal microfno, etc...).
+
+  \section{Procedura di calibrazione} 
+    Per poter utilizzare un microfono è necessario essere certi che questo sia ben calibrato. La procedura di calibrazione viene realizzata in \textbf{camere anecoiche} prive di riverbero, 
+    realizzate con pareti con dei coni di diverse dimensioni che assorbono il suono per diffusione (ogni onda viene riflessa in tante direzioni diverse a seconda del punto di impatto e viene 
+    così dispersa). E' particolarmente importante evitare la formazione di onde stazionarie per avere una buona calibrazione. Il microfono viene montato sul fonometro e viene "incappucciato" 
+    con un calibratore (o eventualmente un pistonofono). A questo punto vengono inviati, grazie al calibratore, segnali di pressione (i.e. livello) e frequenza noti e viene misurata la 
+    differenza di potenziale (in realtà la variazione di quest'ultima,che è la cosa veramente significativa,come per qualunque potenziale) fornita dal microfono. Ripetendo la procedura si può 
+    tarare lo strumento associando ad ogni $V$ (i.e. ad ogni $d$, usando le notazioni di \ref{mic}) il livello corretto.
+
+  \section{Registratore}
+    Spesso viene indicato con la siglia D.A.T (Data Audio Tape).\\
+    E' uno strumento utile per immagazzinare dati da processare in un secondo momento. In particolare è l'unico strumento in grado di registrare effettivamente il suono.\\
+    Si dividono in due categorie:
+    \begin{itemize}
+	    \item \underline{Registratori analogici:} registrano i dati in modo continuo.
+	    \item \underline{Registratori digitali:} campionano il segnale da registrare prendendo dati solo tot volte per unità di tempo.Solitamente la frequenza di campionamento è 
+		  $\geq 48 KHz$, ovvero almeno il doppio della massima frequenza dello spettro udibile ($\sim20 KHz$). Questo perché per determinare univocamente una sinusoide (che ha la forma 
+		  generale: $Asin(\omega t + \delta)$ e cioè che dipende da 2 parametri - $A$ e $\delta$ - come una retta) servono almeno due punti (Teorema di campionamento di Nyquist-Shannon).
+
+    \end{itemize}
+    Ovviamente i registratori analogici hanno un range di registrazione migliore in frequenza, ma hanno un peggiore rapporto segnale/rumore e presentano una maggiore distorsione (parametri che 
+    peggiorano solitamentea causa dello scorrimento della bobina magnetica). I migliori registratori permettono di utilizzare contemporaneamente più canali, di modo da poter riprodurre la 
+    differenza tra i tempi di arrivo dei segnali all'ascoltatore (che è ciò che permette all'uomo -stereofonia- di individuare il movimento della sorgente sonora). In gni caso, affichè le misure fatte su un
+    suono registrato siano affidabili, il suono va riprodotto allo stesso livello. Per permettere ciò a inizio registrazione si fa registrare un suono di livello noto così che si possa settare 
+    la riproduzione al livello corretto.
+   \section{Caratteristiche Generali della Strumentazione Acustica}
+    Ogni strumento adoperato in acustica deve avere la possibilità di:\begin{itemize}
+    \item applicare curve di ponderazione alla misura (ad esempio  $D(\nu)$)
+    \item disporre di un \textit{set di costanti di ponderazione temporale} che permettono di modificare i tempi di registrazione degli stumenti (\underline{oss:}non modificano i tempi di campionamento, che devono verificare comunque il teorema di Nyquist-Shannon e sono di solito determinati dall'elettronica degli strumenti, ma solo il rate di registrazione dei dati). Questo permette, nel caso di strumenti analogici (i.e. "a lancetta") di rendere possibile la lettura evitando eccessive fluttuazioni della lancetta, o di poter registrare e visualizzare dati di segnali di durate temporali molto diverse dal tempo di risposta dello strumento.
+    \end{itemize}
+    Inoltre per effettuare \textbf{misure non presidiate}, ovvero misure per le quali non è presente lo sperimentatore nelle vicinanze, è spesso utile poter accedere agli stumenti da remoto (internet), di modo da poter prelevare i dati (evitando di riempire la memoria) ed eventualmente modificare i parametri in gioco. Le misure non presidiate sono particolarmente usate per studiare fenomeni di che richiedono campionamenti molto lunghi, o addirittura permanenti (e.g: studio dell'impatto acustico di un aeroporto). In ogni caso sono parametri particolarmente importanti per la stumentazione il peso e l'autonomia energetica, tanto che sono state pensate anche centraline mobili, o semimobili autonome, ma molto costose.
+
+\chapter{Norme Internazionali sugli strumenti di misura}
+  Gli strumenti adoperati per qualsiasi tipo di misura (anche non acustica) devono rispettare delle norme nazionali,oppure in assenza di queste quelle internazionali,
+  che specificano le caratteristiche tecniche degli stessi. Inoltre una misura deve essere effettuata secondo standar anche questi codificati a livello nazionale ed internazionale.
+  Il funzionamento di tali organi è organizzato "dal basso": se non è presente una norma per un qualche strumento o una qualche procedura a livello internazionale un comitato si 
+  riunisce per proporla a livello nazionale e internazionale. Altrimenti se una norma è già presente a livello più alto viene adottata quella. Servono a mantenere degli standard 
+  comuni per permettere di confrontare le misure non solo nei loro valori, ma anche su come vengono realizzate.
+	  \begin{center}
+	  \begin{tabular}{lll}
+		  norme tecniche & norme procedurali & livello \\
+		  I.E.C. & I.S.O. &  mondiale \\
+		  C.E.N.E.L.E.C. & C.E.N. & europeo \\
+		  C.E.I & U.N.I. &  nazionale (Italia) \\
+	  \end{tabular}
+	  \captionof{table}{Organi che stabiliscono le normative vigenti}
+	  \label{Organi}
+	  \end{center}
+  Per quanto riguarda le norme tecniche che specificano range, sensibilità, stabilità, distorsione, dinamica (i.e. range in frequenza) degli strumenti a livello italiano la normativa da 
+  rispettare è la \textbf{C.E.I.}, a livello europeo la \textbf{C.E.N.E.L.E.C.} e a livello mondiale la \textbf{I.E.C.}. Per quanto riguarda invece le norme sulle procedure di misurazione si 
+  devono rispettare a livello italiano le norme \textbf{U.N.I.}, a livello europeo le \textbf{C.E.N.} e a livello mondiale le \textbf{I.S.O.}.\\
+  Le norme I.E.C. dividono in particolare gli stumenti in 3 tipologie:
+  \begin{itemize}
+	  \item \underline{\textbf{Tipo 0:}} sono gli strumenti da laboratorio, hanno una maggiore precisione dato che servono per prendere misure in ambienti controllati dove gli errori 
+		sistematici vengono minimizzati.
+	  \item \underline{\textbf{Tipo 1:}} sono gli strumenti per effettuare misure sul campo, ovvero in un ambiente meno controllato. Non è quindi necessario lo stesso grado di accuratezza 
+		egli strumenti di tipo 0. Questo permette di risparmiare sui costi della strumentazione sacrificando un po' di precisione.
+	  \item \underline{\textbf{Tipo 2:}} sono gli strumenti ingegneristici, hanno un minore costo ed una minore precisione.
+  \end{itemize}
+  Per ogni tipo vengono specificati i parametri massimi per ogni caratteristica degli strumenti.
+
+  \section{Legge 447/95 e DPCM 11/11/97}
+    La \textbf{Legge 26 Ottobre 1995, N. 447}\footnote{per maggiori informazioni \url{http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1995;447}} è la madre di tutte le leggi sull'acustica, e da questa che provengono tutte le norme e i decreti che regolano l'acustica ambientale, in particolare 
+    il \textbf{DPCM (Decreto del Presidente del Consiglio dei Ministri) 14 Novembre 1997} che stabilisce i limiti ,in $dB(A)$, di: 
+    \begin{itemize}
+      \item \define{IMMISSIONE}: Livello sonoro misurato nei pressi di un ricevitore ottenuto quindi come somma di tutti i livelli dovuti alle varie sorgenti.
+      \item \define{EMISSIONE}:Livello sonoro nei pressi della sorgente. Teoricamente è un dato attinente solamente alla sorgente, indipendente quindi dalle condizioni in cui si deve propagare il segnale e dalle caratteristiche del ricevitore.
+				Solitamente però si considera il livello nel punto corrispondente al più vicino ricevitore
+      \item \define{DIFFERENZIALE}: Differenza tra il livello di immissione in presenza di una data sorgente e in assenza di questa. Corrisponde quindi ad una stima del rumore di 
+				fondo per il segnale di interesse.
+      \item \define{RUMORE RESIDUO}: è il livello di \underline{pressione sonora} ponderato con la curva A misurato in un ambiente previa esclusione delle sorgenti disturbanti
+      \item \define{RUMORE AMBIENTALE}: è il livello equivalente di immissione in \underline{pressione sonora} ponderato A misurato in un ambiente
+    \end{itemize}
+    Si osservi che il livello Differenziale può essere visto come differenza tra il rumore residuo e quello ambientale. Nel caso in cui il Livello differenziale superi i $\sim 3dB(A)$ si ha un disturbo effettivo.
+    Il decreto fissa i 2 diversi limiti uno \underline{Diurno}, se la misura è fatta dalle 6:00 alle 22:00, e uno \underline{Notturno}, se la misura è fatta dalle 22:00 alle 6:00.
+    Ogni comune nell'attuazione del decreto deve suddividere il propio territorio in \underline{6 classi} in ordine decrescente di tutele (più è bassa la classe più alta è la tutela).
+    Riportiamo l'alllegato del decreto riportante la lista delle classi con relativa descrizione e limiti.
+
+    \begin{figure}[ht!]
+      \begin{center}
+	\includegraphics[scale=0.4, width = \textwidth]{Tab.pdf}
+      \end{center}
+      \caption{Classi Territoriali\label{classi}}
+    \end{figure}
+
+    \begin{figure}[ht!]
+      \begin{center}
+	\includegraphics[scale=0.4, width = \textwidth]{Imm.pdf}
+      \end{center}
+      \caption{Limiti di Immissione\label{immissione}}
+    \end{figure}
+
+    \begin{figure}[ht]
+      \begin{center}
+	\includegraphics[scale=0.4, width = \textwidth]{Emm.pdf}
+      \caption{Limiti di Emissione\label{emissione}}
+      \end{center}
+    \end{figure}
+    \newpage 
+In classe 6 non viene applicato il limite sul livello differenziale.\\
+I limiti riportati possono poi variare a seconda del tipo di segnale. In particolare i \textbf{segnali impulsivi}, cioè segnali 
+caratterizzati da una ripetitività (almento 10 volte in tempo diurno-vedi seguito- o almeno 2 in tempo notturno) e di livello almeno
+ $6 dB$ superiore al livello in quel momento, ed i \textbf{segnali tonali}, ovvero segnali che sono toni puri (frequenza molto piccata e livello almeno $5 dB$ superiore),
+sono considerati particolarmente fastidiosi e vengono penalizzati con l'aggiunta di $+3 dB$ al momento dell'elaborazione dei dati.\\
+I segnali invece \textbf{a tempo parziale}, ovvero segnali \underline{durante il tempo diurno} con una durata temporale limitata vengono considerati meno, in quanto eventi 
+occasionali.\\
+Nell'elaborazione il loro livello viene diminuito con $-6 dB$ se la durata è inferiore a 15 minuti e $-3 dB$ se inferiore a un'ora. Tale bonus non viene applicato ai 
+segnali provenienti da mezzi di trasporto.\\
+Il rispetto di tali norme deve essere garantito dagli enti locali che possono eventualmente prevedere ulteriori sanzioni e limiti.\\
+Si osservi che i limiti fissati per legge non sono limiti teorici, bensì sperimentali: il rispetto delle norme vigenti deve essere provato con misure ``in opera'' 
+      
+    \begin{esercizio} \label{esImm} 
+      Dire se il livello di immissione $T_{dr}=60 dB(A)$ viene superato dai i seguenti segnali in tempo diurno $T_d$:
+      \begin{center}
+	\begin{tabular}{llll}
+	  Segnale & dalle ore alle & Livello in $dB(A)$ \\
+	  $S_1$ & 4 $\rightarrow$ 12 & 67 \\
+	  $S_2$ & 12 $\rightarrow$ 13 & 70 \\
+	  $S_3$ & 6 $\rightarrow$ 22 & 55 & (rumore di fondo) \\
+	\end{tabular}
+	\captionof{table}{segnali}
+	\label{tab:}
+      \end{center}
+    \end{esercizio}
+
+\section{Definizioni}
+Riportiamo di seguito alcune definizioni ricorrenti nella normativa sull'acustica tratte dalla già citata legge quadro 447/95:
+\begin{itemize}
+ \item \textbf{Inquinamento acustico}: immissione in un ambiente (sia interno che esterno) di un livello fastidioso e/o disturbante per le varie attività umane e non.\\
+\item \textbf{Sorgenti sonore fisse}: si tratta di sorgenti sonore stabili quali in generale le infrastrutture, stade, industrie, etc...Si osservi che la sorgente sonora è la strada 
+		anche se ciò che produce il suono è la macchina $\Rightarrow$ \underline{le strade sono sorgenti sonore stabili}\\
+\item \textbf{Valore limite di emissione}:è il massimo valore che è consentito nei pressi di una sorgente. Solitamente si considera come punto per misurarlo la posizione del più vicino
+		ricevitore.\\
+\item \textbf{Valore limite di immissione}: massimo valore misurabile nei pressi di un ricevitore.\\
+\item \textbf{Valore di attenzione}: soglia vicina ai valori limite oltre la quale è bene considerare dei provvedimenti che tamponino la situazione.\\
+\item \textbf{Valore di qualità}: obbiettivo per il livello di immissione in un ambiente da raggiungere o mantenere grazie a piani di risanamento.\\
+\item \textbf{Tempo di Riferimento}: è il periodo in cui è diviso il giorno: \begin{itemize}\item Tempo diurno: dalle 6 alle 22\\ \item dalle 22 alle 6\\ \end{itemize}
+\item \textbf{Tempo di Osservazione}: è il periodo temporale, \underline{necessariamente contenuto}\\
+		\underline{all'interno di un unico tempo di riferimento} in cui vengono campionate le misure.\\
+\item \textbf{Tempo di Misura}: è l'effettivo tempo di campionamento dei dati, ovviamente contenuto nel tempo di osservazione.\\
+\end{itemize}
+\begin{equation} T_{misura}\subseteq T_{osservazione} \subseteq T_{riferimento} \end{equation}
+
+\section {Norme sulle procedure di misura}
+Dato che il rispetto delle norme deve essere verificato sperimentalmente, la legge fissa anche le procedure da usare e quali sono i parametri significativi da rilevare.
+\subsection{Isolamento Acustico di Facciata}
+La normativa riguardante l'acustica architettonica distingue inanzitutto le facciate (che separano un ambiente abitativo da un ambiente esterno) dalle pareti (che invece separano due volumi di un ambiente abitativo).
+Per studiare l'isolamento acustico di facciata sono fissati i valori sul \textbf{coefficiente di isolamento acustico di facciata}:
+\begin{equation}
+ D_{2m,nT}=D_{2m}+10log(\frac{T}{T_0})
+\end{equation}
+ dove:\begin{itemize}
+       \item $D_{2m}=L_{1,2m}-L_2$ è la differenza tra il livello $L_{1,2m}$ misurato a 2 metri all'esterno della facciata con suono incidente a $\frac{\pi}{4}$ (per minimizzare l'effetto della forma interna dell'ambiente)
+				  ed $L_2$  livello misurato all'interno dell'ambiente che deve essere completamente sonorizzato (ovvero tutti i modi normali vengono eccitati-vedi seguito)\\
+	\item $T_0$ è un valore di riferimento fissato dalla normativa\\
+	\item $T$ è il tempo di riverbero all'interno dell'ambiente (vedi seguito)\\
+      \end{itemize}
+Questo parametro serve quindi a rendere la misura indipendente dal tempo di riverbero.
+
+\chapter{Materiali in Acustica}
+  I materiali si dividono dal punto di vista acustico in due categorie:
+  \begin{enumerate}
+    \item \textbf{materiali fonoassorbenti:} sono materiali che dissipano l'energia sonora di un segnale entrante. Sono quindi materiali "a cellule aperte", ovvero di tipo spugnoso (e.g: 
+	  lana di vetro). In tali materiali gli "elementi" sono tra loro ben separati di modo che l'onda di pressione entrante metta in vibrazione tali elementi che dissipano l'energia in 
+	  calore a causa degli attriti con l'aria nelle intercapedini. Idealmente se tra tali elementi ci fosse il vuoto l'assorbimento sarebbe ancora migliore.\footnote{dato che il suono non si propaga nel vuoto}
+    \item \textbf{materiali fonoisolanti:} sono materiali che riflettono l'energia sonora entrante, separando nettamente gli ambienti anche dal punto di vista acustico. Hanno spesso 
+	  struttura "a cellule chiuse", ovvero offrono al segnale entrante una superficie continua che riflette il segnale (e.g: polistirolo, plexiglas, etc..)
+  \end{enumerate}
+  
+  Ovviamente in generale un materiale presenterà parzialmente entrambe le caratteristiche e viene classificato in base a quella dominante. Si possono ricavare informazioni sul materiale su 
+  cui incide un'onda sonora dal bilancio energetico:
+  \begin{equation}\label{energie}
+    E_i=E_r+E_t+E_a
+  \end{equation}
+
+  Dove $E_i$ è l'energia dell'onda incidente, $E_r$ dell'onda riflessa, $E_t$ dell'onda trasmessa e $E_a$ è la quota di energia assorbita (e/o diffusa) dal materiale su cui l'onda
+  incide. Dividendo tutto per $E_i$ si ottiene:
+  $$1=\frac{E_r}{E_i}+\frac{E_t}{E_i}+\frac{E_a}{E_i} \Rightarrow 1= r + t+ a$$
+  dove ovviamente vale:\\
+  \begin{center}
+  $r=\frac{E_r}{E_i} \rightarrow$ coefficiente di riflessione\\
+  $t=\frac{E_t}{E_i} \rightarrow$ coefficiente di trasmissione\\
+  $a=\frac{E_a}{E_i} \rightarrow$ coefficiente di assorbimento\\
+  \end{center}
+  I materiali fonoassorbenti quindi, per minimizzare l'energia riflessa avranno $a$ massimo, diversamente i materiali donoisolanti, per minimizzare l'energia trasmessa avranno $t$
+  minimo.
+
+\section{Tempo di riverbero}
+	E' definito come il tempo che serve ad un segnale a diminuire di $60 dB$, ovvero a diventare un milionesimo ($10^{-6}$) del livello iniziale. Questo ovviamente dipende 
+	fortemente dall'ambiente\footnote{ad esempio in camera anecoica sarà nullo} e dalla frequenza del segnale che consideriamo, ed in particolare sarà direttamente 
+	proporzionale al volume dell'ambiente e ai coefficienti di riflessione $r$ delle pareti di tale ambiente. Sotto alcune ipotesi che specificheremo tra poco si può dare una 
+	formula empirica detta \textbf{di Sabine}:
+
+	\begin{equation} \label{sabine}
+		\tau \equiv \tau(\nu) = \frac{0.16 V}{\sum_{i=1}^{N}a_iS_i} 
+	\end{equation}
+	dove $V$ è il volume dell'ambiente, $a_i$ sono i coefficienti di assorbimento (che contengono la dipendenza dalla frequenza $\nu$), e $S_i$ le rispettive superfici. 
+	Le ipotesi necessarie per l'utilizzo di questa formula sono: 
+	
+	\begin{enumerate}
+		\item \textbf{distribuzione uniforme di energia} nell'ambiente che stiamo considerando. Questo significa che i coefficienti di assorbimento delle pareti devono 
+		essere tutti molto limitati (indicativamente $a_i \leq 0.3$) affinché non si abbia una caduta della densità di energia sonora nei pressi di una parete.
+		\item \textbf{ambiente sonorizzato}, cioè l'ambiente deve essere "riempito" dall'onda sonora del segnale che stiamo studiando. In particolare questa dovrà avere 
+		la possibilità di eccitare tutti i modi propri di oscillazione dell'ambiente. 
+	\end{enumerate}
+	Data la forte limitazione sugli $a_i$ per diminuire il tempo di riverbero di un ambiente applicando tale formula difficilmente sarà sufficiente agire su un'unica parete. 
+	Un metodo che si rivela spesso efficace è di inclinare le pareti (aumentando di fatto S) e renderle "ondulate". Il fatto di rendere le pareti ondulate serve a raggiungere 
+	una maggiore diffusione del suono (ad esempio le decorazioni in basso rilievo nei teatri antichi hanno questo scopo). La diffusione infatti genera una apparente isotropia 
+	nella provenienza del suono (se è tale da non creare un ritardo apprezzabile dall'orecchio umano tra l'arrivo del suono principale e dei suoni riflessi), migliorando la 
+	percezione sonora. Nei casi in cui invece il ritardo è apprezzabile si hanno fenomeni di eco (vedi sotto).
+	Il tempo di riverbero risulta particolarmente lungo (idealmente infinito, se non ci fossero dispersioni) in caso di onde stazionarie (che si formano in presenza di due 
+	superfici riflettenti una di fronte all'altra): in tal caso infatti si hanno nodi che non oscillano e ventri e gole che si susseguono e il livello del suono non scende 
+	(se non molto lentamente a causa di fenomeni dispersivi dovuti all'aria stessa). Un altro caso in cui il tempo di riverbero cresce molto è il caso di "eco" che si presenta
+	quando si ha una riflessione da una parete frontale posta ad una distanza tale da essere raggiunta dal segnale sonoro in un tempo ben definito.\\
+
+	\begin{esercizio}
+		Calcolare il tempo di riverbero per una stanza di dimensioni $20$;$50$;$5$ con pareti caratterizzate da $a_i=0.2$ eccetto il pavimento di $a_{pavimento}=0.02$ 
+	\label{esTriverbero}
+	\end{esercizio}
+	Si noti che non è sempre  possibile misurare sperimentalmente il tempo di riverbero (ad esempio in un ambiente con un rumore di fondo di $30 dB$, non sarà possibile 
+	misurare una diminuzione di $60 dB$ di un segnale con picco massimo di $90 dB$), di conseguenza questo si ricava con estrapolazioni dall'andamento del segnale nel tempo: 
+	prolungando con continuità la curva di decrescenza fino al livello massimo meno i $60 dB$.
+
+  \section{Materiali fonoisolanti}
+    La grandezza che caratterizza i materiali fonoisolanti è il loro \textbf{coefficiente di isolamento}, detto anche potere fonoisolante, che è 
+    definito da:
+    \begin{equation} 
+      R=10log\left(\frac{1}{\tau}\right)
+    \end{equation}
+    dove $\tau$ è il \underline{Tempo di Riverbero}. Il potere fonoisolante si può misurare sperimentalmente: la
+    procedura standard è prendere una lastra del materiale che vogliamo esaminare (di spessore $1 mm$) che separa due ambienti (di volume
+    minimo $100 m^3$). In uno degli ambienti viene messa una sorgente sonora, nell'altro un ricevitore. La differenza tra i livelli sonori
+    misurati dal ricevitore in assenza e in presenza della lastra separatrice è una misura del coefficiente di isolamento. Questo quindi 
+    dipenderà anche dalla frequenza del segnale. Una formula utile praticamente per stimarlo è:
+    \begin{equation}
+      R \approx 20log(\sigma\nu)-44 dB 
+      \label{R_sperimentale}
+    \end{equation}
+    
+    dove $\sigma$ è la densità superficiale di massa del materiale e $\nu$ la frequenza del segnale. La stima è fatta approssimando un altra 
+    formula molto più generica ovvero\footnote{per ulteriori approfondimanti si rimanda a \url{http://www.rockwool.it/files/RW-IT/file/acustica/Acustica\%20in\%20Edilizia/Cap.1_AcusticaInEdilizia.pdf}}:
+    
+    \begin{equation}
+     R_{\theta}= 10 Log \left[\left( \frac{m \nu cos(\theta)}{\rho c_0}\right)^2\right]
+     \label{R_teorico}
+    \end{equation} 
+    dove $\theta$ è l'angolo con cui incide l'onda sulla parete, $\nu$ è la sua frequenza $c_0$ la sua velocità nell'aria (supposta costante), e 
+    $\rho$ ed $m$ sono rispettivamente densita e massa della superfice di cui si vuole calcolare il potere fonoisolante $R$. Se si considera la sorgente isotropa possiamo approssimare
+    $R=R_0-k$ dove $k$ è una costante di correzione di $3-5 dB$. quindi sfruttando l'approssimazione fatta nella formula \ref{R_teorico} 
+    otteniamo \ref{R_sperimentale}.
+    
+    Questa formula è però valida solo in una regione limitata dello spettro (che dipende dal materiale), detta "zona della legge di massa", in
+    cui il coefficiente di isolamento è direttamente proporzionale alla frequenza.
+    
+    \begin{figure}[ht!]
+     \begin{center}
+      \includegraphics[width = \textwidth]{potere_fonoisolante.jpeg}\\
+      \label{grafico_fonoisolante}
+     \end{center}
+    \end{figure}
+    
+	Per adesso, anche se abbiamo fatto approssimazioni di vario tipo per avere un R di riferimento per i vari materiali, abbiamo comunque conservato la dipendenza dalla 
+	frequenza. Per avere un riferimento di paragone tra diversi materiali si adotta la seguente convenzione: ricavato sperimentalmente (come descritto sopra) il coefficiente 
+	di fonoisolamento $R(\nu)$ per le varie frequenze dell'udibile (variando cioè la frequenza della sorgente posta nella prima stanza) si riporta su un grafico $R(\nu)$ vs. 
+	$\nu$ in terze di ottava. Si disegna poi su tale grafico la curva di valori ISO di riferimento. Si "abbassa" tale curva di decibel in decibel fino a quando che la 
+	differenza tra gli scarti sfavorevoli\footnote{gli scarti sono considerati sfavorevoli quando l'isolamento trovato sperimentalmente risulta minore dell'isolamento di 
+	riferimento della curva ISO} delle due curve scende sotto i $32 dB$ e a questo punto si assume come $R_{rif}$ del materiale il valore che si trova sulla curva di 
+	riferimento alla frequenza di $500 Hz$
+    
+    \begin{figure}[ht!]
+     \begin{center}
+      \includegraphics[width = \textwidth]{convenzioneR.jpeg}\\
+     \end{center}
+    \end{figure}
+    \newpage
+	Si osservi che in questo grafico sono riportate in ascissa le frequenze in terza di ottava, di conseguenza per valutare gli scarti sfavorevoli non dobbiamo eseguire un
+	integrale, bensì sommare solamente 32 valori, infatti le terze di ottava di riferimento sono per convenzione 32 e coprono l'intero spettro dell'udibile (che è l'intervallo
+	in frequenza che ci interessa)\footnote{le bande di riferimento in ottava sono invece 10}.
+   
+   \section{Materiali Fonoassorbenti}
+    Come in tutta l'acustica gli elementi base del nostro sistema restano sempre sorgente ricevitore e cammino, gli oggetti fonoassorbenti sono 
+    ostacoli frapposti tra ricevitore e sorgente volti ad attenuare il passaggio del suono senza rifletterlo. Un indice che si usa per 
+    classificare i materiali è il seguente:\\
+    \define{Area Equivalente di Assorbimento}
+    \begin{equation}
+     A\udef \sum _{i=1}^n a_iS_i
+    \end{equation}
+    dove $a_i$ sono i vari coefficenti di assorbimento delle relative superfici $S_i$. Se modifichiamo, ad esempio, una parete che si trova tra 
+    osservatore e sorgente ricoprendola di materiale fonoassorbente abbiamo che il livello sonoro percepito è diminuito di:
+    \begin{equation}
+     DL= 10 Log \left[ \frac{A_2}{A_1} \right]
+    \end{equation}
+    Dove $A_1$ è l'Area Equivalente della parte prima del trattamento e $A_2$ è quello dopo.\\
+    \\
+    Le caratteristiche principali dei materiali fono assorbenti sono:
+    \begin{itemize}
+     \item \underline{Rapporto tra il volume dei vuoti e quello del materiale}: più è grande questo rapporto più l'onda sonora si diffonde 
+           difficilmente dento il materiale più forte è l'attenuazione %%ma in sostanza è al densità(?)
+     \item \underline{Spessore}: Più spesso è il materiale più viene attenuato il livello del segnale
+     \item \underline{Lungezza d'onda incidente}: come vedremo anche l'assorbimento, come il potere fonoisolante $R(\nu)$, dipende da frequenza e quindi lunghezza d'onda del segnale
+    \end{itemize}
+    
+    \subsection[Risuonatori Acustici]{Risuonatori Acustici\footnote{detti anche risuonatori di Helmholtz}}
+     Sono degli oggetti a forma di goccia: hanno un collo stretto con una apertura circolare e una pancia sferica\footnote{questa è una 
+     descrizione ideale schematica, infatti ad esempio vengono sulle strade i risuonatori acustici sono fatti da 2 stati di diversi di catrame 
+     uno a frammenti spessi (tra gli spazi di questi abbiamo le pance dei risuonatori) e uno sopra fatto di frammenti fini (i colli dei 
+     risuonatori)}. La forma del risuonatore consente al suono di entrare all'interno e una volta dentro rimbalza nelle pancia senza più uscire a causa dell'aria che continua ad entrare dal collo.
+     Dalle dimensioni del risuonatore si ricava la \textbf{Frequenza di risonanza} ovvero la frequenza alla quale l'assorbimento è massimo:
+     \begin{equation}
+      \nu _0=\frac{c_0}{2\pi }\sqrt{\frac{r^2}{V\left(1+\frac{\pi }{2r}\right)}}
+     \end{equation}%%%mi sa che dipendeva anche dalla lunghezza del collo, non ho gli appunti per controllare, DA RIVEDERE FORMULA
+     dove $V$ è il volume ed $r$ è il raggio dell'apertura.\\
+     Studiando l'andamento dell'assorbimento in funzione della frequenza di un risuonatore le cui pareti sono state ricoperte di materiale 
+     fonoassorbente si nota che: rispetto allo stesso risuonatore senza materiale fonoassorbente il livello massimo di assorbimento, quello 
+     corrispondente alla frequenza $\nu_0$, si è abbassato, ma si è anche "allungato nelle frequenze", ovvero l'intervallo di frequenze che hanno
+     un livello di assorbimento simile a quello di $\nu_0$ è aumentato. In generale sono efficaci se ne sono presenti molti e sono un sistema fonoassorbente estremamente selettivo, come si vede chiaramente dal grafico dell'assorbimento in funzione della frequenza.     
+     \begin{figure}[ht!]
+      \begin{center}
+       \includegraphics[width = \textwidth]{graficorisuonatore.jpg}
+      \end{center}
+     \end{figure}
+	\newpage
+\subsection{Pannelli Vibranti}
+Un altro tipo di materiale fonoassorbente sono i cosiddetti "pannelli vibranti" che permettono di produrre uno \textbf{shift in frequenza} verso frequenze così basse da non essere udibili. Vengono applicati di fronte a delle pareti, ma sono distanziati da essi, e tale distanza è colmata da uno strato di aria. L'onda incidente fa vibrare il pannello, che dissipa tutta l'energia. La frequenza di risonanza si può individuare teoricamente con:
+\begin{equation} \nu_0 = \frac{60}{\sqrt{d\sigma}} \end{equation}
+dove $60$ è una costante dimensionale, $d$ è la distanza pannello-parete, e $\sigma$ la densità di massa del pannello stesso. 
+Tali pannelli trovano il loro uso più comune all'esterno di strutture architettoniche.
+
+Solitamente i materiali fonoassorbenti usati nell'acustica edilizia sono materiali compositi che presentano diversi "strati" con caratteristiche differenti.
+
+\section{Scattering o Riflessione Diffusa}
+	Per frequenze tali da poter utilizzare l'approssimazione di raggi acustici (ovvero frequenze tali che la lunghezza d'onda $\lambda$ sia molto minore delle dimensioni 
+	caratteristiche degli ostacoli ) si può usare per la riflessione la nota legge di Snell:
+	\begin{itemize}
+		\item raggio incidente e riflesso giacciono sullo stesso piano perpendicolare alla superficie riflettente e l'angolo di incidenza e di riflessione 
+		(misurati rispetto alla normale al piano riflettente) sono uguali
+	\end{itemize}
+	Questa però descrive tra i raggi riflessi solo quello principale, ed ha alla base l'ipotesi (mai verificata nella realtà) che la superficie riflettente sia perfettamente 
+	liscia. In realtà esistono molti raggi riflessi secondari che ci permettono di sentire il segnale proveniente da una sorgente anche quando non siamo perfettamente in linea con 
+	essa (o in linea con la riflessione principale). Il livello dei raggi riflessi secondari dipende tipicamente dall'angolo di incidenza e tende ad essere più elevato nella 
+	direzione del raggio speculare a quello incidente. Questo fenomeno viene sfruttato con i "pannelli diffusori", caratterizzate da "celle" consecutive di spessore e larghezza diverse 
+	(e apparentemente casuali-sono in realtà caratterizzate da successioni di numeri primi tra loro) che servono a massimizzare la diffusione positiva (cioè che non crei 
+	interferenze apprezzabili dall'orecchio), per realizzare un migliore ambiente acustico (e.g: orchestra shell).
+
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[scale=0.4]{scattering.jpeg}
+		\end{center}
+	\end{figure}
+
+\section{Campo sonoro Diffuso}
+	In un ambiente riverberante (ovvero dove si hanno delle riflessioni e non tutta la potenza sonora viene assorbita dalle pareti) si può creare un campo sonoro diffuso, ovvero un suono di livello in pressione uniforme in ogni punto dello spazio. A seconda del parametro adimensionale $\frac{\lambda}{d}$, dove $d$ è al lunghezza di scala dell'ambiente si possono individuare due diverse trattazioni:
+	\begin{itemize}
+		\item $\lambda << d$ $\Rightarrow$ Acustica Geometrica \\
+		\item $\lambda \approx d$ o $\lambda \geq d$ $\Rightarrow$ Acustica ondulatoria\\
+	\end{itemize}
+	
+	\notabene In caso di campo sonoro diffuso l'Intensità del suono (definita precedentemente come velocità per energia) deve essere divisa per un fattore 4 %perché????
+	Per cui si può ricavare l'energia incidente in caso di campo diffuso come:\\%%non torna un cazzo dimensionalmente
+	\begin{center}
+		$I=\frac{Ec_s}{4}$ $\Rightarrow$ $E_{inc}=\frac{I S}{4}$
+	\end{center}
+	E l'energia assorbita sarà (in termini di unità assorbenti medie $\bar{A}=\bar{\alpha}S$):
+	$$E_{ass}=\frac{I \bar{A}S}{4}$$
+	Cioè si ha una potenza totale nell'ambiente (data dalla differenza tra la potenza della sorgente e l'energia assorbita per unità di tempo):
+	\begin{equation}
+		\frac{dE_{tot}}{dt}=W-\frac{I \bar{A}S}{4V}
+	\end{equation}
+	Risolvendo questa semplice equazione differenziale con la condizione $E(t=0)=E_0$ si ottiene l'andamento con cui decresce in livello di potenza un campo sonoro diffuso:
+	\begin{equation}
+		E=\frac{4W}{c_s\bar{A}}e^{\frac{-c_s\bar{A}}{4V}t}
+	\end{equation}
+	Da questa "legge oraria dell'energia" si deduce la seguente per il tempo di riverbero:
+	\begin{equation} T=\frac{20V}{c_s\bar{A}log_{10}(e)}  \end{equation}
+	che a sua volta può essere ricondotta giocando con le costanti alla nota \underline{formula di Sabine} (\ref{sabine})
+
+\subsection{Limiti della formula di Sabine}
+	La formula appena ricavata ha dei grossi limiti di applicazione. Inanzitutto se poniamo $\bar{A}=1$, cioè se ci poniamo in ambiente completamente assorbente, il tempo di riverbero
+	dovrebbe andare a zero, questo non succede $\Rightarrow$ la formula è una buona approssimazione solamente per $\bar{A} << 1$ ovvero $\alpha << 1$. Inoltre se i coefficienti di 
+	assorbimento sono molto diversi tra loro si potrenno avere tempi di riverbero diversi per le varie frequenze (ovvero si otterrebbero due rette diverse sul grafico). Ancora una 
+	volta questo comportamento non si ottiene come limite nella forumla di sabine, che deve considerarsi valida solo per $\alpha$ omogenei.
+	\subsection{Correzioni alla formula di Sabine}
+		Si può tener conto di $\alpha \approx 1$ con la formula di Eyring:
+		\begin{equation} T=\frac{55.3V}{-c_slog(1-\alpha)S} \end{equation}
+		o eventualmente correggendo la formula di Sabine sostituendo ad $\sum \alpha_i A_i \rightarrow \frac{\alpha_i A_i}{1-\sum \alpha_i A_I}$  di modo che quando l'area equivalente di assorbimento va a 1 il tempo di riverbero vada effettivamente a zero.
+		Questa può ulteriormente essere corretta tenendo conto dell'assorbimento dell'aria.
+
+\section{Eco}
+Il fenomeno dell'eco è \underline{una riflessione a sorgente spenta}. Questa ovviamente è possibile solo nel caso in cui il suono si propaghi in un ambiente
+ abbastanza grande di modo che l'onda sonora raggiunga gli ostacoli (e venga riflessa) solo dopo che la sorgente è stata spenta. Affinché il ritardo temporale sia apprezzabile
+deve essere di almeno $\sim 50 ms$, e questo (sapendo la velocità del suono) permette di stimare le dimensioni di tale ambiente ($\sim 17 m$).
+La presenza di eco va ovviamente aumentare il tempo di riverbero.\\
+ Supponendo di lavorare con un campo sonoro perfettamente diffuso (di modo che il posizionamento della sorgente è totalmente ininfluente) si può 
+prevedere il seguente andamento per il livello: si avrà un primo picco dovuto al segnale diretto, e dopo un certo ritardo altri picchi successivi dovuti all'eco smorzati da effetti di 
+divergenza geometrica.
+%%eventualmente inserire grafico
+	\section{Barriere Acustiche}
+	Le barriere acustiche sono dispositivi atti ad ostacolare la propagazione di un segnale sonoro. Possono essere sia naturali (vegetazione, etc...) sia artificiali. Il loro 
+	effetto principale è quello di diffusione al bordo delle onde sonore (in acustica ondulatoria) ovvero l'aumento del cosidetto \textbf{cammino ottico} in approssimazione di 
+	acustica geometrica ($\lambda \ll d$). Le barriere sono di diversi tipi a seconda dell'effetto che si cerca, e tendono sempre a massimizzare la loro ''ombra geometrica`` 
+	(eventualmente realizzando tratti inclinati), ovvero la quantità di raggi sonori che schermano. Particolari barriere a ``T'' vengono realizzare per schermare i segnali diffusi 
+	oltre che quelli diretti. Il principale parametro per lo studio dell'effetto di un Prova barriera è la \textbf{differenza di cammino ottico}:
+	\begin{equation}
+		\delta=a+b-c
+	\end{equation}
+	dove $c$ sarebbe la distanza percorsa dal segnale in assenza di barriera e $a+b$ è quella percorsa in presenza di quest'ultima:
+	$a$ per arrivare al bordo della barriera e $b$ per andare dal bordo al ricevitore. \'E intuitivo che l'effetto della barriera è tanto maggiore quanto maggiore è il
+	$\delta$\footnote{si osservi anche che è sempre positivo per la disuguaglianza triangolare}, per questo le barriere risultano maggiormente efficaci se poste in
+	prossimità della sorgente (e.g. barriere fonoassorbenti lungo le strade) o vicino al ricevitore.\\
+	Dal parametro $\delta$ si definisce poi il \textbf{numero di Fresnel}
+	\begin{equation}
+	N=2\frac{\delta}{\lambda}
+	\end{equation}
+	dove $\lambda$ è la lunghezza d'onda del segnale.
+	Quest'ultimo parametro entra nel coefficiente che permette di stimare semiempiricamente il contributo di schermaggio della barriera,
+	dato dalla formula di Kurze-Anderson:
+	\begin{equation}\label{KA}
+	A_{bar}=10log\left( \frac{\sqrt{2\pi N}}{tgh(\sqrt{2\pi N})} \right)
+	\end{equation}
+	
+	\subsection{Limiti dell'utilizzo di Barriere Acustiche}
+
+		Affinché una barriera acustica sia efficace è necessario che la sua ombra geometrica venga massimizzata.
+		Solitamente la condizione che viene data è:
+		$$L_{bar}\geq 2L$$
+		dove $L$ sono le dimensioni lineari del sistema, e $L_{bar}$ è la dimensione lineare della barriera.
+		Tale condizione risulta sufficiente in quanto garantisce una copertura angolare di $\sim \frac{\pi}{2}$:
+		i contributi che non vengono coperti sono però affetti da una significativa divergenza geometrica in quanto provengono da una distanza maggiore.\\
+		%%se qualuno ha voglia disegno
+		Si osservi inoltre che nella formula di Kurze-Anderson si tiene conto di un'unica sorgente che fornisce un contributo diretto, trascurando le eventuali riflessioni.
+		Inoltre questa trascura gli effetti al bordo (approssimazione di barriera infinitamente lunga) e non distingue tra barriere fonoassorbenti e fonoisolanti.
+
+\section{Conteggio dei Modi Normali di Oscillazione}%questa section non ha senso (palazzuoli)
+
+	Consideriamo un ambiente a forma di parallelepipedo: il numero di modi normali può essere contato lavorando nel dominio delle frequenze.
+	Supponendo che tale numero di modi sia abbastanza grande possiamo lavorare in tale dominio in maniera differenziale e ricavare:
+	\begin{equation}
+	N\backsimeq\frac{\pi \nu^3 8V}{6c_s^3}=\frac{4\pi V}{3c_s^3}\nu^3
+	\end{equation}
+	La distribuzione dei modi normali dipende dalla forma della stanza: se il rapporto tra le dimensioni lineari dei vari lati del nostro parallelepipedo sono
+	razionali si avranno sovrapposizioni di modi normali e quindi fenomeni di risonanza, altrimenti si avrà un campo sonoro maggiormente diffuso.
+	%%da scrivere la distribuzione di energia sonora e il conteggio delle frequenze normali di oscillazione
+
+\section{Acustica ondulatoria}
+	Possiamo definire un potenziale acustico $\varphi$ che oscilla secondo l'equazione di Laplace\footnote{consideriamo inizialmente il caso unidimensionale per semplicità}:
+	
+	\begin{equation}
+		\frac{\partial^2 \varphi}{\partial t^2}= \frac{\partial^2 \varphi}{\partial x^2} \label{laplace}
+	\end{equation}
+	che può facilmente essere risolta in trasformata di Fourier:
+	$$\frac{\partial^2 \varphi}{\partial t^2} +k^2\hat{\varphi} =0 \Rightarrow \hat{\varphi}=c_1e^{i\omega t - ikx}+c_2e^{i\omega t + ikx}$$
+	dove il primo addendo rappresenta un'onda piana che si propaga verso destra mentre il secondo un'onda piana che si propaga verso sinistra, come si vede facilmente applicando il principio della fase stazionaria\footnote{cioè ponendo la derivata della fase a zero e guardando il segno di $\dot{x}$}.
+	La velocità di particella è legata al potenziale acustico $\varphi$ da:
+
+	\begin{equation}
+		v =\frac{\partial \varphi}{\partial x}
+	\end{equation}
+	Se imponiamo che questa si annulli al bordo (ad esempio nella situazione di propagazione di un suono in un tuto di diametro confrontabile con la lunghezza d'onda) si vede che:
+	$$v(0)=v(L)=0 \Rightarrow kL=m\pi \Rightarrow k=\frac{m\pi}{L} $$
+	Ovvero sono possibili solamente certi valori discreti di $k$($=\frac{\omega}{c_s}$), cioè siamo in presenza di \underline{onde stazionarie}. Dalla relazione tra $k$ e $\omega$ si ricavano i modi normali di oscillazione:
+	
+	\begin{equation}
+		\omega_m=c_s\frac{m\pi}{L}
+	\end{equation}
+	\notabene{Pressione e Velocità di particella sono sfasate di $\frac{\pi}{2}$, dove la velocità di particella è nulla la pressione è massima e viceversa}
+	In tre dimensioni la situazione è analoga. Si otterranno i modi normali di oscillazione con:
+
+	\begin{equation}
+		\omega_{m,n,p}=c_s\pi\sqrt{\left(\frac{m}{L_x}\right)^2+\left(\frac{n}{L_y}\right)^2+\left(\frac{p}{L_z}\right)^2}
+	\end{equation}
+	dove si osserva una degenerazione dei modi propri di oscillazione a causa delle possibili permutazioni delgi indici.
+%%manca la definizione di modi assiali, etcc... che non ho scritto neanche negli appunti 
+
+\chapter{Propagazione di segnali sonori}
+	Ci concentriamo ora sulla propagazione in campo esterno. Consideriamo per semplicità una sorgente isotropa che genera un segnale.
+	I fattori che influenzano maggiormente la sua propagazione saranno: presenza di barriere (che possono causare diffrazione, 
+	oppure riflettere i raggi sonori in approssimazione di acustica geometrica), vento, gradiente di temperatura, superfici fonoassorbenti e/o fonoisolanti, etc..
+
+	\section{Effetti Atmosferici}
+		I fattori che influenzano principalmente la propagazione di onde sonore in campo aperto dovuti ad effetti atmosferici sono il vento e il gradiente di temperatura.
+		Effetti minori possono poi essere dovuti a variazioni di umidità, ecc\dots
+
+		\subsection{Vento}
+			Il vento ha una influenza molto significativa per la propagazione di segnali a grandi distanze ($\sim 100 m$).
+			Quest'ultimo viene solitamente tratatto nell'approssimazione di acustica geometrica:
+
+			\begin{figure}[ht!]
+				\begin{center}
+					\includegraphics[width = \textwidth]{vento.jpeg}
+					\caption{rappresentazione schematica dell'effetto del vento sui raggi sonori}
+					\label{vento}
+				\end{center}
+			\end{figure}
+
+			Come si vede l'effetto principale del vento è quello di incurvare i raggi sonori. Questo divide quindi lo spazio in due regioni:
+			\begin{itemize}
+			\item \textbf{zona sottovento}: è la zona antecedente la sorgente rispetto alla direzione del vento (a destra in figura \ref{vento}). In tale zona i raggi 
+					sonori vengono deviati verso l'alto e di conseguenza si ha un isolamento dovuto alla presenza di vento. In alcune zone d'ombra si arriva ad una 
+					attenuazione di addirittura $20 dB$, paragonabile a quella di una barriera acustica.\\
+			\item \textbf{zona sopravento}: è la zona in cui la propagazione delle onde sonore è favorita dal vento. Si noti che risulta molto difficile schermare un raggio
+					sonoro incurvato dal vento con una barriera: il vento infatti incurva comunque i raggi sonori rendendo inefficaci le barriere poste a metà 
+					distanza tra sorgente e ricevitore. Per essere efficace una barriera dovrà essere messa in prossimità del ricevitore (o eventualmente della 
+					sorgente).\\
+			\end{itemize}
+
+		\subsection{Gradiente di temperatura}
+			In condizioni normali la temperatura non è uniforme nell'atmosfera: si ha un gradiente costante che descrive una diminuzione di $\sim-1$°$C$ ogni $100 m$ di 
+			altitudine. In tali condizioni la propagazione del suono verso l'alto è favorita.\\
+			In particolari momenti della giornata (e.g. al primo mattino o tardi la sera) si può verificare la condizione di \underline{inversione termica}
+			ovvero si ritrova una temperatura maggiore ad una maggiore altezza. In questo caso i raggi sonori tendono ad essere riflessi verso il basso.
+			\begin{figure}[ht!]
+				\begin{center}
+					\includegraphics[width = \textwidth]{temperatura.jpeg}
+					\caption{rappresentazione schematica dell'effetto del gradiente di temperatura sui raggi sonori}
+					\label{vento}
+				\end{center}
+			\end{figure}
+
+			%Per stimare l'attenuazione del livello (in pressione) si può dare la seguente formula semiempirica, valida per capire gli ordini di grandezza delle varie cause 
+			%di attenuazione:
+			%$$ L = _L_{rif}-A$$
+			%dove $L_{rif}$ è un valore di riferimento che dipende dalla posizione relativa sorgente-ricevitore noto ed $A$ è il termine di attenuazione:
+			%\begin{equation}
+			% A=A_{div}+A_{veg}+A_{atm}+A_{misc}
+			%\end{equation}
+			%%%%Da aggiungere il termine A_{bar} dovutto alle barriere di cui ancora non si è parlato
+			%Vediamo il significato e l'ordine di grandezza di ciascun termine di questa formula semiempirica:\\
+			%\begin{itemize}
+			% \item $A_{div}\approx -6 dB$ per ogni raddoppio della distanza: è il termine di divergenza geometrica dovuto alla forma e alla direzionalità della sorgente.\\
+			% 
+			% \item $A_{veg}$ è il termine di attenuazione dovuto alla presenza di vegetazione. Tale termine dipende fortemente dalla ftrovano un mezzo meno denso ad una 
+			% certa altezzequenza: $A_{veg}\varpropto (\frac{\nu}{1000})^{\frac{1}{3}}\frac{r}{100}$ dove r è la distanza coperta da vegetazione attraversata dal segnale.\\
+			%		 L'ordine di grandezza è solitamente trascurabile: $\sim5 dB$ per 150 m di vegetazione alla frequenza $\nu=500 Hz$, cioè servono 150 metri di 
+			%		vegetazione fitta per attenuare di $5 dB$ un segnale a bassa frequenza.\\
+			%\item $A_atm$ è il termine di attenuazione dovuto ai fattori atmosferici che non sono quelli discussi sopra (vento e variazione di temperatura). Anche questo dipende fortemente dalla temperatura:
+				%$A_{atm}\approx r10^{-3}[0.6+3(\frac{\nu}{1000})]$. L'ordine di grandezza varia di conseguenza:\begin{itemize} \item $\sim5dB$ per 1500 m a $\nu=500Hz$\\\item$\sim5dB$ a soli 250 m per $\nu=4 10^{3}Hz$\end{itemize}\\
+			%\item $A_{misc}$ è il termine che tiene conto di tutti i fattori rimanenti\footnote{nel seguito verrà esplicitato maggiormente}
+
+			%\end{itemize}
+
+
+	\section{Formula Semiempirica per l'attenuazione}
+
+		Nel caso di propagazione del suono in campo aperto si ha una formula semiempirica per stimare l'ordine di grandezza dell'attenuazione dovuta ai vari fattori presenti:
+		$$L_p\equiv L_p(r,T,\cdots)=L_{sor}-A$$
+		dove $L$ è il livello misurato che è funzione della distanza $r$ dalla sorgente oltre che dei vari parametri specifici della situazione che stiamo considerando
+		(temperatura $T$, presenza di vento, barriere, vegetazione, etc..). $L_{sor}$ è il livello di riferimento della sorgente mentre il termine $A$ è un termine correttivo
+		che può essere suddiviso in più addendi:
+		\begin{equation}
+		A=A_{div}+A_{bar}+A_{veg}+A_{atm}+A_{misc}+A_{vist}
+		\end{equation}
+		Vediamo in dettaglio l'ordine di grandezza del contributo dovuto a ciascun termine:
+		\begin{itemize}
+		\item $A_{div}$ è il termine dovuto alla divergenza geometrica \footnote{già discusso in dettaglio per sorgenti lineari e puntiformi}.
+				Semiempiricamente il suo ordine di grandezza è di circa $\sim 6 dB$ per ogni raddoppio della distanza
+		\item $A_{bar}$ è il termine dovuto all'eventuale presenza di barriere acustiche. Tale termine è quindi dato dalla formula di Kurze-Anderson ($\ref{KA}$).
+				Si può stimarne il suo contributo a circa $\sim 5dB$ all'interno dell'ombra geometrica dela barriera.
+		\item $A_{veg}\approx \sqrt[3]{\frac{\nu}{1000}}\frac{r_{att}}{100}$ è il contributo dovuto alla presenza di vegetazione nell'ambiente in cui si propaga il segnale.
+			$\nu$ è la frequenza del segnale in Hertz, e $r_{att}$ è l'effettiva distanza di attraversamento attraverso vegetazione in metri.
+			Solitamente questo contributo è trascurabile: per una frequenza a $500 Hz$ servono $1500$m di vegetazione per avere una attenuazione di $\sim 5 dB$.
+		\item $A_{atm}=\frac{r_{att_{atm}}}{1000}[0.6+3\frac{\nu}{1000}]$ è il termine dovuto in generale alle cause atmosferiche, da cui però sono escluse le due principali 
+			(vento e gradiente di temperatura). Si osservi che tale contributo dipende fortemente dalla frequenza $\nu$ e infatti si può stimare con:
+					\begin{itemize}
+						\item $\sim 5 dB$ per $r_{att_{atm}}\approx 1500$ metri a $\nu=500$ Hz
+						\item $\sim 5 dB$ per $r_{att_{atm}}\approx 500$ metri a $\nu=250$ Hz
+					\end{itemize}
+		\item $A_{vist}=10log(\frac{\theta}{\pi})$ è la correzione dovuta all'``angolo di vista'' in $dB(A)$ dove $\theta$ è proprio tale angolo.
+		\item $A_{misc}$ è un termine (non necessariamente trascurabile)  che tiene conto dei rimanenti fattori
+		\end{itemize}
+
+\chapter{Modelli Acustici per il Rumore Stradale}
+Esponiamo a grandi linee in questo capitolo alcuni modelli più o meno recenti per lo studio del rumore stradale.
+Sono modelli matematici semiempirici che forniscono il livello equivalente in $dB(A)$ nei pressi della sorgente.
+I seguenti modelli sono approssimazioni dato che si considera come sorgente la strada, ma in realtà la sorgente fisica di rumore sono le varie componenti dei veicoli che vi transitano.
+Si osservi come regola generale che in città il numero di veicoli pesanti sia $\sim 10 \%$ di quello di veicoli leggeri.
+\section{Modello C.S.T.B.}
+\'E il più vecchio modello. Il rumore stradale viene stimato con:
+\begin{equation}
+ L=10log(Q)-6.5log(l)+51
+\end{equation}
+dove $Q$ è il termine di flusso veicolare (questo modello non tiene conto della differenza tra i vari veicoli, e $l$ è la lunghezza del tratto stradale considerato.
+Il rumore di fondo è stimato a $51 dB(A)$
+\section{Modello C.E.T.U.R.}
+\'E un modello più evoluto  che tiene conto della differenza nel livello dovuto a mezzi pesanti e mezzi leggeri.
+\begin{equation}
+ L=10log(Q_l+EQ_p)-10log(l)+55+K_h+K_v+K_g+K_i+K_r
+\end{equation}
+dove $Q_l$ è il flusso di veicoli leggeri, $E$ è il fattore di equivalenza tra un mezzo pesante e uno leggero e $Q_p$ il flusso veicolare pesante, mentre il rumore di fondo è a $55 dB(A)$
+I vari termini correttivi sono dovuti a:
+\begin{itemize}
+ \item $K_h$ correzione dovuta all'altezza degli edifici circostanti, che interviene solo per altezze maggiori di 4 metri.
+ \item $K_g$ correzione per il tipo di manto stradale
+ \item $K_i$ correzione dovuta alla presenza di incroci con strade secondarie
+ \item $K_v$ correzione per la velocità: aggiunge $1 dB(A)$ ogni $10 \frac{Km}{h}$ per velocità superiori ai $60 \frac{km}{h}$\footnote{il rotolamento degli pneumatici produce un livello significativo solo per $v\geq 50 \frac{Km}{h}$}
+ \item $K_r$ correzione dovuta alla pendenza della strada
+\end{itemize}
+\section{Modello del C.N.R. di Roma}
+Questo modello considera la strada come una sorgente lineare posta nella linea di mezzeria e stima il livello in prossimità della facciata degli edifici al bordo di tale strada.
+\begin{equation}
+L=35,1+10log(Q_l+8Q_p)-10log(\frac{25}{d})+correzioni
+\end{equation}
+Si osservi che il fattore di conversione $E=8$ è stato fissato per via sperimentale, $d$ è la distanza dalla linea di mezzeria della facciata 
+Le correzioni di cui si tiene conto sono analoghe a quelle del modello C.E.T.U.R., e in più vengono introdotti termini correttivi per tener conto delle \textbf{riflessioni} eventualmente multiple che contribuiscono al livello. 
+\section{Modello C.R.T.N}
+Questo modello inglese è quello in cui si nota maggiormente la struttura logica che sta alla base della modellizzazione.
+Per studiare il fenomeno del rumore stradale questo modello lo suddivide in 3 sottoproblemi:
+\begin{itemize}
+ \item Sorgente
+ \item Propagazione
+ \item Ricevitore\footnote{questo è anche l'ordine con cui si deve intervenire in generale per rientrare nei limiti legali di immissione}
+\end{itemize}
+La sorgente viene divisa in \textbf{segmenti omogenei} per tutte le caratteristiche (intensità e tipologia del traffico, presenza di ostacoli, pendenza, etc..).
+Ogni segmento viene studiato separatamente e solo in fondo al modello si sommano tutti i contributi (tenendo conto della divergenza geometrica).
+Della propagazione interessa sia la presenza di ostacoli, che la tipologia di terreno (o in questo caso specifico di asfalto).
+Il modello vuol prevedere il percentile $L_{10}$ dovuto al rumore stradale. 
+
+
+\chapter{Soluzioni degli esercizi}
+  Es. \ref{es_livelliuguali}) Per trovare la somma dei livelli dobbiamo \underline{sommare la somma delle energie dei singoli segnali}, ovvero le loro potenze al quadrato. Dalla definizione di decibel 	
+  ricaviamo la potenza corrispondente al livello "L": $$ L = 10log(\frac{P^2}{P_0^2})\Rightarrow \frac{L}{10} = log(\frac{P^2}{P_0^2})\Rightarrow P^2 = 10^{\frac{L}{10}}P_0^2 $$ Per cui la 	
+  potenza totale è: $$ P_{tot}^2\sum_0^nP^2 = n P^2 = n 10^{\frac{L}{10}}P_0^2 $$ dato che è la somma di $n$ termini tutti identici. Si ricava infine il livello soma in decibel dalla 
+  definizione: $$L_{tot}=10Log(\frac{P_{tot}^2}{P_0^2}) \Rightarrow L_{tot} = 10log(\frac{n 10^{\frac{L}{10}}P_0^2}{P_0^2}) \Rightarrow L_{tot} = 10log(n)+L $$
+
+  Es. \ref{es_livelli10}) Consideriamo due livelli $L_1$ e $L_2$ tali che $L_1-L_2\geq 10$ (si pensi ad esempio: $L_1 = 70 dB$ e $L2 = 60 dB$, ma è importante notare che in scala 
+  logaritmica le proprietà sono indipendenti dall'ordine di grandezza in cui stiamo lavorando). Come nel esercizio precedente andiamo a sommare le energie dei segnali: 
+  $$P_1^2 = 10^{\frac{L_1}{10}}P_0^2$$ $$P_2^2 = 10^{\frac{L_2}{10}}P_0^2$$
+  L'energia del segnale risultante dalla somma è proporzionale a: 
+  $$P_{tot}^2 = P_1^2 + P_2^2 = 10^{\frac{L_1}{10}}P_0^2 +10^{\frac{L_2}{10}}P_0^2 $$
+  Da cui il livello della somma è: 
+  $$L_{tot} = 10log(\frac{P_{tot}^2}{P_0^2}) = 10 log(10^{\frac{L_1}{10}}+10^{\frac{L_2}{10}})$$ 
+  Dato che $L_1 \geq L_2 + 10 \Rightarrow \frac{L_1}{10} \geq \frac{L_2}{10} + 1 $ il secondo addendo nell'argomento del logaritmo risulta di un ordine di grandezza inferiore al primo, 
+  ed è quindi trascurabile. Si ottiene quindi: $$L_{tot} \approx 10 log(10^{\frac{L_1}{10}}) =L_1$$ 
+  che è quanto volevamo dimostrare.\\
+
+  Es. \ref{es_Dnu}) Dato che non abbiamo informazioni sulla durata temporale e la successione degli eventi sonori dati, possiamo assumere che siano tutti contemporanei. Nel calcolare il livello 
+  equivalente la dipendenza temporale si semplifica. Si osservi che il livello equivalente senza applicare la curva di ponderazione coincide con il massimo livello (poichè è maggiore della 
+  somma degli altri due di $\sim10 dB$). Applicando la curva di ponderazione otteniamo i livelli di cui dobbiamo fare il livello equivalente:
+
+  \begin{center}
+	  \begin{tabular}{lll}
+		  Livello dB & D($\nu$) & livello $dB(A)$ \\
+		  80 & -10 & 70 \\
+		  70 & -5 & 65 \\
+		  60 & 0 & 60 \\
+	  \end{tabular}
+	  \captionof{table}{Segnale IN dB(A)}
+  \end{center}
+
+  Risulta chiaro che la situazione è diversa dal caso in dB: non è più vero che il massimo è maggiore della somma degli altri due di almeno 10 dB(A). A questo punto applichiamo come nell'esercizio \ref{es_livelli10} la definizione, senza introdurre la dipendenza temporale:
+  $$L_{eq}=10log(\sum_i \frac{P_i^2}{P_0^2})$$
+  dove $\forall i \Rightarrow \frac{P_i^2}{P_0^2}=10^{\frac{Li}{10}}$ (che si ottiene invertendo la definizione di livello), per cui:
+  $$L_{eq}=10log(\sum _i 10^{\frac{Li}{10}}) = 10log(10^7+10^{6.5}+10^{6}) = 71.5 dB(A) $$\\
+
+  Es.\ref{es_graficopressione}) Vogliamo applicare la definizione \ref{equivalente}: dobbiamo quindi ricavare dal grafico dato il quadrato delle pressioni:
+  
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width = \textwidth]{grafico_pressione_quad.jpeg}
+    \end{center}
+  \end{figure}
+
+  Inoltre data la natura discreta di questo segnale possiamo trasformare l'integrale della \ref{equivalente} in una sommatoria:
+  
+  \begin{equation} 
+    L_{eq} = 10 log(\frac{1}{T}\sum_i \frac{P_i^2}{P_0^2}T_i) 
+  \end{equation}
+  
+  Sostituendo le $P_i^2$ date dal grafico, ed avendo $T=5 s$, $P_0=20 \mu Pa$ si ottiene:
+  $$L_{eq}= 10log(\frac{1}{5}(\frac{1}{20 \cdot 10^{-6}}3+\frac{2}{20 \cdot 10^{-6}}2))=0,48 dB $$\\ %%controlla se è giusto
+
+  Es.\ref{es_equivalente8h}) Cominciamo col calcolare il $L_{eq}$, tenendo presente $P^2 = P_ 0^210^{\frac {L} {10}}$ con $L$ indichiamo il livello in dB:
+  $$L_{eq}=10\log\left[\frac{1}{8}\int_0^8 \frac{P^2}{P_0^2} \, dt\right]=10\log\left[\frac{1}{8}\left(\int_0^2 10^9 \, dt+\int_0^1 10^7 \, dt+\int_0^3 10^{8.5} \, dt+\int_0^2 10^{\frac{L}{10}} \, dt\right)\right]$$ 
+  $$L_{eq}=10\log\left[\frac{1}{8}\left(2*10^9+10^7+3*10^{8.5}+2*10^{\frac{L}{10}}\right)\right]$$
+  Osserviamo che abbiamo da fare una somma tra 4 termini esponenziali dei quali uno è minore della somma degli altri due di almeno un ordine di grandezza ($10^9 + 10^{8.5} >> 10^7$), quindi 
+  il termine di ordine $\sim10^7$ è trascurabile. In generale possiamo stabilire che \textbf{un livello è trascurabile rispetto ad un altro se tra i due ci sono almeno  $10 dB$, vedi l'esercizio 
+  precedente}.\\
+  Per quanto appena detto possiamo dire che affinchè il quarto termine non sia trascurabile, in prima approssimazione, ovvero non tenendo di conto del tempo di durata dei suoni, deve valere 
+  che: $90+85-L<10 [dB]$.\\Facendo i conti più precisamente (cioè tenendo conto delle durate temporali), e considerando che $\log 2 \approx 0.3; \log 3 \approx 0.4$ si ottiene:
+  $93+85-(L+3) \leq 10  \Rightarrow$Affinchè $L$ risulti trascurabile deve valere $L \leq 83$ dB.\\
+
+  Es.\ref{es_isolaseganle}) Il problema può essere affrontato in vari modi:
+  \begin{itemize}
+    \item potremmo effettuare una analisi statistica degli eventi, fissando una durata minima ed un livello di riferimento per individuare i picchi del rumore ambientale ed eliminarli. Questo 
+	  metodo però ha due svantaggi: inanzitutto è molto laborioso ed inoltre anche eliminando i picchi così individuati viene sempre mantenuta una certa quantità di energia nel calcolo del livello 
+	  della sorgente proveniente dall'energia del segnale di disturbo della parte di segnale sottostante il livello di riferimento fissato.
+	  \begin{figure}[ht!]
+	    \begin{center}
+	      \includegraphics[width = \textwidth]{GER.jpeg}
+	    \end{center}
+	    \caption{L'intersezione tra le aree evidenziate corrisponde all'energia del segnale disturbante - la gaussiana - che viene comunque considerata, poichè è inferiore al livello di riferimento 
+	    fissato - la retta}
+	  \end{figure}
+	  Inoltre ci sono tutte le cause di incertezza dovute agli errori sistematici (errata stima dei livelli di riferimento,etc..).
+    \item potremmo cercare di eliminare il rumore residuo individuandolo con i coefficienti cumulativi: cioè che ci disturba in questo problema sono i picchi, di conseguenza potremmo voler 
+	  togliere tutti i suoni di coefficiente $L_5$ o $L_{10}$. Anche in questo caso otterremmo un segnale molto "sporco" e difficilmente rappresentativo della sorgente a causa della grande quantità 
+	  di energia residua che lascieremmo.
+    \item potremmo procedere con l'analisi spettrale, ma data la variabilità delle frequenze del disturbo (si pensi ad esempio ad un disturbo dovuto al traffico urbano), ed eventualmente anche 
+	  della sorgente raramente questa risulterà significativa.
+    \item dato che per ipotesi il livello di interesse è costante nel tempo e di livello minore rispetto al disturbo ambientale esso sarà sempre superato ogni qual volta si ha un disturbo. 
+	  Risulta quindi facile individuare il livello della sorgente come quello caratterizzato dal coefficiente $L_{90}$ o $L_{99}$. Tali coefficienti ci forniscono il miglior modo possibile di 
+	  individuare il segnale di una sorgente se questo è costante in livello e generalmente minore del disturbo ambientale.  
+  \end{itemize}
+  Si noti che questo metodo non è minimamente applicabile nel caso di disturbo uniforme (il disturbo uniforme è come l'inquinamento luminoso in astrofisica, che copre il segnale di interesse 
+  - luce dei corpi celesti o suono che sia- ed è ineliminabile).\\
+
+  Es.\ref{es_distribuzioni1}) Osserviamo che se assumiamo che il coefficiente $L_N$ indichi il livello che viene \underline{superato} nell' $N\%$ delle volte si ha ovviamente:
+  \begin{itemize}
+    \item $L_{100} = 69 dB$ dato che il livello minimo è $70 dB$
+    \item $L_{66} = 70 dB$ dato che su 9 secondi totali è superato per 6 secondi
+    \item $L_{33} = 80 dB$ dato che è superato per 3 secondi su 9
+    \item $L_0 = 90 dB$ che non viene mai superato
+  \end{itemize}
+  Il grafico dei coefficienti cumulativi inoltre, dato che non disponiamo di informazioni per i livelli $70<L<80$ e $80<L<90$ \textbf{sarà necessariamente a scalini}: !]
+\begin{figure}[ht!]
+    \begin{center}
+      \includegraphics[scale=0.25]{esercizio_cumulativa.jpeg}
+    \end{center}
+  \end{figure}
+  Per trovare l'istogramma distributivo dei livelli si dovrà dividere l'asse delle ascisse in "bande in livello" e vedere per quanta percentuale temporale il segnale è compreso in queste 
+  bande. Questo corrisponde concettualmente a fare la derivata del grafico dei coefficienti cumulativi. Si ottiene banalmente una distribuzione piatta dato che il segnale sta per 3 secondi 
+  intorno ai $70 dB$, ma altrettanti intorno a $80 dB$ e $90 dB$, su un tempo totale di 9 secondi.\\ %%inserire grafico. 
+
+  Es. \ref{es_distribuzioni2}) Si comincia innanzitutto a escludere tutti i valori in dB minori di 20 poichè non attendibili a causa della sensibilità del fonometro. detto ciò a partire da 20dB cominciamo a contare le occorrenze:\\
+
+	\begin{minipage}{.9\textwidth}
+
+		\centering
+		\includegraphics[width = \textwidth]{es_distribuzioni2_sol.jpeg}
+		Grafico Occorrenze
+
+	\end{minipage}
+	\begin{minipage}{.1\textwidth}
+		\centering
+		\begin{tabular}{ll}
+			  (20;25) & 7 \\
+			  (25;30) & 9 \\
+			  (30;35) & 10 \\
+			  (35;40) & 4 \\
+			  (40;45) & 5 \\
+			  (45;50) & 10 \\
+			  (50;55) & 4 \\
+			  (55;60) & 8 \\
+			  (60;55) & 2 \\
+		\end{tabular}
+	\end{minipage}\\
+	
+	A questopunto per fare la distributiva si procede considerando come livello di ogni banda della distributiva quello più basso e si calcola la percentuale di volte che viene superato con la seguente formula:
+	\begin{equation}
+		L_{x\%}=\frac{N^{\circ} \mbox{ di volte che viene superato il livello x}}{N^{\circ} \mbox{ totale di livelli misurati}} \cdot 100
+	\end{equation}
+	quindi calcolando i primi 2 livelli percentili: $$20dB: \mbox{   } \frac{56}{63} \cdot 100 \simeq 89\% \Rightarrow 20dB=L_{89\%}     \mbox{  ;  } 25dB: \mbox{   } \frac{47}{63} \cdot 100 \simeq 75\% \Rightarrow 25dB=L_{75\%}$$
+	e così via si procede col calcolo. Facendo un grafico della cumulativa (grafico che verra a scalini poichè non abbiamo sufficenti dati per fare un fit continuo) otteniamo:
+	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[scale = .2]{es_distribuzioni2_cumulativa_sol.jpeg}
+		\caption{Cumulativa}
+	\end{figure}
+
+Es. \ref{esImm} Dobbiamo calcolare il livello equivalente (in pressione) e pesarlo su 16 ore ($T_d$): indichiamo esplicitamente col pedice A che tale livello è misurato in $dB(A)$
+\begin{equation} L_{Aeq} = 10 log \left[ \frac{1}{16}\left(2 10^{6.7}+ 13 10^{5.5} + 10^7\right) \right] = 62 \geq 60 \end{equation}
+
+Es.\ref{esTriverbero} Possiamo con tali $a_i$ usare la formula data: 
+$$ \tau =n \frac{0.16 V}{\sum_{i=0}^{N}a_iS_i}$$
+Osserviamo però che il pavimento risulterà in questo calcolo trascurabile, di conseguenza possiamo scrivere:
+$$\tau \approx \frac{0.16 1000}{0.2(50+200+300)}\approx 2 $$
+Si osservi che oltre al pavimento stiamo trascurando tutte le possibili correzioni dovute al tipo di segnale. In particolare stiamo assumendo un segnale che sonorizza l'ambiente e isotropo.\\
+\underline{Nel caso di un segnale non isotropo infatti non tutte le pareti daranno lo stesso contributo}.
+
+\end{document}
